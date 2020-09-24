@@ -1,4 +1,4 @@
-package com.example.scoreapp.ui
+package com.example.scoreapp.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

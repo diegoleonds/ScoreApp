@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Temporada(
+data class Season(
         @PrimaryKey(autoGenerate = true)
-        val id: Long
+        val id: Long = 0
 )

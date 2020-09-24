@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.SeasonActivity"></activity>
-        <activity android:name=".ui.GameActivity" />
-        <activity android:name=".ui.SeasonListActivity">
+        <activity android:name=".ui.activity.SeasonActivity"></activity>
+        <activity android:name=".ui.activity.GameActivity" />
+        <activity android:name=".ui.activity.SeasonListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
