@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/seasonTextView"
+            android:id="@+id/seasonNumberTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="11dp"
@@ -28,8 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="9dp"
             android:src="@drawable/ic_trofeu_ouro"
-            app:layout_constraintStart_toStartOf="@+id/seasonTextView"
-            app:layout_constraintTop_toBottomOf="@+id/seasonTextView" />
+            app:layout_constraintStart_toStartOf="@+id/seasonNumberTextView"
+            app:layout_constraintTop_toBottomOf="@+id/seasonNumberTextView" />
 
         <TextView
             android:id="@+id/seasonMaximumRecordTextView"
