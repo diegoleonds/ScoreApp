@@ -1,27 +1,34 @@
 package com.example.scoreapp.ui.adapter
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.scoreapp.data.model.Season
+import com.example.scoreapp.R
+import com.example.scoreapp.ui.model.Season
+import kotlinx.android.synthetic.main.item_season.view.*
 
 class SeasonAdapter(
     val seasons: List<Season>
 ) : RecyclerView.Adapter<SeasonAdapter.SeasonViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SeasonViewHolder {
-        TODO("Not yet implemented")
-    }
-
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        val itemView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_season, parent, false)
+        return SeasonViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: SeasonViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val season = seasons.get(position)
+        holder.maxRecordTextView.text = season.maxPoints.toString()
+        holder.minRecordTextView.text = season.minPoints.toString()
     }
 
-    class SeasonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    override fun getItemCount(): Int = seasons.size
 
+    class SeasonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val maxRecordTextView = itemView.seasonMaximumRecordTextView
+        val minRecordTextView = itemView.seasonMinimumRecordTextView
+        val seasonNumberTextView = itemView.seasonNumberTextView
     }
 }
