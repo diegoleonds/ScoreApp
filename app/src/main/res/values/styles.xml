@@ -16,6 +16,13 @@
     <style name="cardViewTitleAppearance">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/material_on_surface_emphasis_high_type</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="recordCardViewAppearance">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/material_on_surface_emphasis_high_type</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

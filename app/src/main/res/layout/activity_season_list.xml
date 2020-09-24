@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TemporadasActivity">
+    tools:context=".ui.SeasonListActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/temporada_appBarLayout"
+        android:id="@+id/seasonAppbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/temporada_toolbar"
+            android:id="@+id/seasonToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize">
 
@@ -28,25 +28,24 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/temporada_rv"
+        android:id="@+id/seasonRecyclerView"
         android:layout_width="409dp"
         android:layout_height="673dp"
         android:layout_marginStart="1dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/temporada_item"/>
+        tools:listitem="@layout/item_season"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/seasonAddFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_margin="@dimen/fab_margin"
         android:backgroundTint="@color/colorAccent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">ScoreApp</string>
+    <string name="app_name">Score App</string>
+    <string name="score">Score:</string>
+    <string name="record_min">Minimum\nRecord</string>
+    <string name="record_max">Maximum\nRecord</string>
+    <string name="game_item_text_view">Game</string>
+    <string name="seasonItemTextView">Season</string>
 </resources>
