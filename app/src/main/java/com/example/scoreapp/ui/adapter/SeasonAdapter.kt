@@ -20,8 +20,8 @@ class SeasonAdapter(
 
     override fun onBindViewHolder(holder: SeasonViewHolder, position: Int) {
         val season = seasons.get(position)
-        holder.maxRecordTextView.text = season.maxPoints.toString()
-        holder.minRecordTextView.text = season.minPoints.toString()
+        holder.maxRecordTextView.text = season.maxRecord.toString()
+        holder.minRecordTextView.text = season.minRecord.toString()
     }
 
     override fun getItemCount(): Int = seasons.size
