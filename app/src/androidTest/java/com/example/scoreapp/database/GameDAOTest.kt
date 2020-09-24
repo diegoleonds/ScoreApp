@@ -71,11 +71,11 @@ class GameDAOTest {
     @Test
     fun shouldReturnSeasonGameWithMorePoints() = runBlocking {
         val expectedGame = Game(
-            1,
-            1,
-            100,
-            true,
-            false
+            id = 1,
+            fkSeason = 1,
+            points = 100,
+            maxRecord = true,
+            minRecord = false
         )
         dao.insert(expectedGame)
 
@@ -95,11 +95,11 @@ class GameDAOTest {
     @Test
     fun shouldReturnSeasonGameWithLessPoints() = runBlocking {
         val expectedGame = Game(
-            1,
-            1,
-            99,
-            false,
-            true
+            id = 1,
+            fkSeason = 1,
+            points = 99,
+            maxRecord = false,
+            minRecord = true
         )
         dao.insert(expectedGame)
 
@@ -116,5 +116,5 @@ class GameDAOTest {
         assertEquals(expectedGame, game)
     }
 
-    
+
 }
