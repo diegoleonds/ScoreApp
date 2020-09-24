@@ -11,4 +11,10 @@ interface GameDAO : BaseDAO<Game> {
 
     @Query("SELECT * FROM game WHERE id = :id")
     suspend fun getById(id: Long): Game
+
+    @Query("SELECT * FROM game WHERE points = (SELECT MAX(points) FROM game WHERE fkSeason = :fkSeason)")
+    suspend fun getSeasonGameWithMorePoints(fkSeason: Long) : Game
+
+    @Query("SELECT * FROM game WHERE points = (SELECT MIN(points) FROM game WHERE fkSeason = :fkSeason)")
+    suspend fun getSeasonGameWithLessPoints(fkSeason: Long) : Game
 }

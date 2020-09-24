@@ -17,21 +17,22 @@ class GameDAOTest {
     private lateinit var db: AppDatabase
 
     @Before
-    fun init(){
+    fun init() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         db = Room.inMemoryDatabaseBuilder(
-            context, AppDatabase::class.java).build()
+            context, AppDatabase::class.java
+        ).build()
 
         dao = db.gameDao()
     }
 
     @After
-    fun finish(){
+    fun finish() {
         db.close()
     }
 
     @Test
-    fun insertGameAndReadIt() = runBlocking{
+    fun insertGameAndReadIt() = runBlocking {
         val expectedGame = Game(
             1,
             fkSeason = 0,
@@ -46,12 +47,12 @@ class GameDAOTest {
     }
 
     @Test
-    fun getGamesBySeason() = runBlocking{
+    fun getGamesBySeason() = runBlocking {
 
         var expectedGames = ArrayList<Game>()
         var game: Game
 
-        for (i in 1..10){
+        for (i in 1..10) {
             game = Game(
                 id = i.toLong(),
                 fkSeason = 1,
@@ -66,4 +67,54 @@ class GameDAOTest {
         val games = dao.getAllBySeason(1)
         assertEquals(expectedGames, games)
     }
+
+    @Test
+    fun shouldReturnSeasonGameWithMorePoints() = runBlocking {
+        val expectedGame = Game(
+            1,
+            1,
+            100,
+            true,
+            false
+        )
+        dao.insert(expectedGame)
+
+        for (i in 2..10) {
+            dao.insert(Game(
+                id = i.toLong(),
+                fkSeason = 1,
+                points = 100,
+                minRecord = false,
+                maxRecord = false
+            ))
+        }
+        val game = dao.getSeasonGameWithMorePoints(1)
+        assertEquals(expectedGame, game)
+    }
+
+    @Test
+    fun shouldReturnSeasonGameWithLessPoints() = runBlocking {
+        val expectedGame = Game(
+            1,
+            1,
+            99,
+            false,
+            true
+        )
+        dao.insert(expectedGame)
+
+        for (i in 2..10) {
+            dao.insert(Game(
+                id = i.toLong(),
+                fkSeason = 1,
+                points = 100,
+                minRecord = false,
+                maxRecord = false
+            ))
+        }
+        val game = dao.getSeasonGameWithLessPoints(1)
+        assertEquals(expectedGame, game)
+    }
+
+    
 }
