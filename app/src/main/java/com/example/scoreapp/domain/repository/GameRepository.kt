@@ -9,4 +9,6 @@ interface GameRepository {
     suspend fun insertGame(game: Game)
     suspend fun deleteGame(game: Game)
     suspend fun updateGame(game: Game)
+    suspend fun getSeasonGameWithMorePoints(fkSeason: Long) : Game
+    suspend fun getSeasonGameWithLessPoints(fkSeason: Long) : Game
 }
