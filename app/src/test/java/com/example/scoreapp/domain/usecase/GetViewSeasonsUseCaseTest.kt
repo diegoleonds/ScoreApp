@@ -7,8 +7,10 @@ import io.mockk.coEvery
 import io.mockk.mockk
 import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert
+import org.junit.Before
 import org.junit.Test
+import org.koin.core.context.startKoin
+import org.koin.dsl.module
 import com.example.scoreapp.data.model.Season as ModelSeason
 import com.example.scoreapp.ui.model.Season as ViewSeason
 
@@ -16,7 +18,15 @@ class GetViewSeasonsUseCaseTest {
 
     val seasonRepository = mockk<SeasonRepository>()
     val gameRepository = mockk<GameRepository>()
-    val useCase = GetViewSeasonsUseCase(gameRepository, seasonRepository)
+    val useCase = GetViewSeasonsUseCase()
+
+    @Before
+    fun init(){
+        startKoin { modules(module {
+            single { seasonRepository }
+            single { gameRepository }
+        }) }
+    }
 
     @Test
     fun shouldReturnViewSeasonWithMaxAndMinRecords() = runBlocking {
@@ -47,7 +57,7 @@ class GetViewSeasonsUseCaseTest {
         )
         val seasonTwoMinGame = Game(
             id = 4,
-            fkSeason = 2,
+            fkSeason = 1,
             points = 1,
             maxRecord = false,
             minRecord = true

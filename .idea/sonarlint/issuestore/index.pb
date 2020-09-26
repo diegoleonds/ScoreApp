@@ -39,3 +39,7 @@ z
 Japp/src/main/java/com/example/scoreapp/domain/transform/SeasonTransform.kt,c\d\cdd9d6b9b326feafba118e81c1d59345c134ca87
 ~
 Napp/src/main/java/com/example/scoreapp/domain/usecase/GetViewSeasonsUseCase.kt,7\3\736a15595342f1d6c8dbd868b739f08d6d1e35ee
+‚
+Rapp/src/test/java/com/example/scoreapp/domain/usecase/GetViewSeasonsUseCaseTest.kt,c\1\c1208ca09a2710d52cf4f3d136eeced31829a40f
+z
+Japp/src/main/java/com/example/scoreapp/ui/viewmodel/SeasonListViewModel.kt,1\5\15d44e0340761d65580507e04050a1ba970f674a

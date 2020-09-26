@@ -1,26 +1,13 @@
 package com.example.scoreapp.data.setup
 
-import android.content.Context
-import androidx.room.Room
 import com.example.scoreapp.data.database.AppDatabase
 import com.example.scoreapp.data.database.GameDAO
 import com.example.scoreapp.data.database.SeasonDAO
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
-object AppDatabaseSetup {
-    private lateinit var appDatabase: AppDatabase
-
-    fun initDatabase(context: Context) {
-        appDatabase = Room
-            .databaseBuilder(context, AppDatabase::class.java, "app-db")
-            .build()
-    }
-
-    fun initDatabaseInMemory(context: Context) {
-        appDatabase = Room
-            .inMemoryDatabaseBuilder(context, AppDatabase::class.java)
-            .allowMainThreadQueries()
-            .build()
-    }
+object AppDatabaseSetup : KoinComponent {
+    private val appDatabase: AppDatabase by inject()
 
     fun closeDatabase() = appDatabase.close()
 
