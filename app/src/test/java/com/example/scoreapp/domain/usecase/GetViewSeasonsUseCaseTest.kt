@@ -1,5 +1,76 @@
 package com.example.scoreapp.domain.usecase
 
-import org.junit.Assert.*
+import com.example.scoreapp.data.model.Game
+import com.example.scoreapp.domain.repository.GameRepository
+import com.example.scoreapp.domain.repository.SeasonRepository
+import io.mockk.coEvery
+import io.mockk.mockk
+import junit.framework.Assert.assertEquals
+import kotlinx.coroutines.runBlocking
+import org.junit.Assert
+import org.junit.Test
+import com.example.scoreapp.data.model.Season as ModelSeason
+import com.example.scoreapp.ui.model.Season as ViewSeason
 
-class GetViewSeasonsUseCaseTest
+class GetViewSeasonsUseCaseTest {
+
+    val seasonRepository = mockk<SeasonRepository>()
+    val gameRepository = mockk<GameRepository>()
+    val useCase = GetViewSeasonsUseCase(gameRepository, seasonRepository)
+
+    @Test
+    fun shouldReturnViewSeasonWithMaxAndMinRecords() = runBlocking {
+        val modelSeasons = listOf(ModelSeason(1), ModelSeason(2))
+        coEvery { seasonRepository.getAll() } returns modelSeasons
+
+        val seasonOneMaxGame = Game(
+            id = 1,
+            fkSeason = 1,
+            points = 10,
+            maxRecord = true,
+            minRecord = false
+        )
+        val seasonOneMinGame = Game(
+            id = 2,
+            fkSeason = 1,
+            points = 2,
+            maxRecord = false,
+            minRecord = true
+        )
+
+        val seasonTwoMaxGame = Game(
+            id = 3,
+            fkSeason = 2,
+            points = 10,
+            maxRecord = true,
+            minRecord = false
+        )
+        val seasonTwoMinGame = Game(
+            id = 4,
+            fkSeason = 2,
+            points = 1,
+            maxRecord = false,
+            minRecord = true
+        )
+
+        coEvery { gameRepository.getSeasonGameWithMorePoints(1) } returns seasonOneMaxGame
+        coEvery { gameRepository.getSeasonGameWithLessPoints(1) } returns seasonOneMinGame
+
+        coEvery { gameRepository.getSeasonGameWithMorePoints(2) } returns seasonTwoMaxGame
+        coEvery { gameRepository.getSeasonGameWithLessPoints(2) } returns seasonTwoMinGame
+
+        val expectedViewSeasonOne = ViewSeason(
+            id = 1,
+            maxRecord = seasonOneMaxGame.points,
+            minRecord = seasonOneMinGame.points
+        )
+        val expectedViewSeasonTwo = ViewSeason(
+            id = 2,
+            maxRecord = seasonTwoMaxGame.points,
+            minRecord = seasonTwoMinGame.points
+        )
+        val expectedViewSeasons = listOf(expectedViewSeasonOne, expectedViewSeasonTwo)
+
+        assertEquals(expectedViewSeasons, useCase.getViewSeasons())
+    }
+}
