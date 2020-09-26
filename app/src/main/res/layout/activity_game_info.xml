@@ -15,8 +15,8 @@
     <include
         android:id="@+id/includeRecordInfo"
         layout="@layout/cardview_record_info"
-        android:layout_width="@dimen/cardview_recorde_width"
-        android:layout_height="@dimen/cardview_recorde_height"
+        android:layout_width="@dimen/cardview_record_width"
+        android:layout_height="@dimen/cardview_record_height"
         android:layout_marginTop="27dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

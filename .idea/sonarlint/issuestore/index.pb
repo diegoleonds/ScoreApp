@@ -31,3 +31,11 @@ Japp/src/main/java/com/example/scoreapp/domain/repository/GameRepository.kt,6\8
 Lapp/src/main/java/com/example/scoreapp/data/repository/GameRepositoryImpl.kt,2\d\2d72df29c62c4a493b3763e5d632ab776314d223
 r
 Bapp/src/main/java/com/example/scoreapp/ui/adapter/SeasonAdapter.kt,b\8\b816743850a6a059c2b4241e473cced24249aabe
+i
+9app/src/main/java/com/example/scoreapp/ui/model/Season.kt,e\7\e7d7312726aea3fed9debedf4e97f77d1503f8c8
+~
+Napp/src/test/java/com/example/scoreapp/domain/transform/SeasonTransformTest.kt,d\7\d78743cb221c48a7e9b0009837266d3c0599ab84
+z
+Japp/src/main/java/com/example/scoreapp/domain/transform/SeasonTransform.kt,c\d\cdd9d6b9b326feafba118e81c1d59345c134ca87
+~
+Napp/src/main/java/com/example/scoreapp/domain/usecase/GetViewSeasonsUseCase.kt,7\3\736a15595342f1d6c8dbd868b739f08d6d1e35ee

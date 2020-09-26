@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimen/cardview_recorde_width"
-    android:layout_height="@dimen/cardview_recorde_height"
+    android:layout_width="@dimen/cardview_record_width"
+    android:layout_height="@dimen/cardview_record_height"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     app:cardCornerRadius="@dimen/cardview_radius">
@@ -27,7 +27,7 @@
             android:layout_height="63dp"
             android:layout_marginLeft="26dp"
             android:layout_marginTop="48dp"
-            android:src="@drawable/ic_trofeu_madeira"
+            android:src="@drawable/ic_wood_trophy"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,7 +61,7 @@
             android:layout_height="63dp"
             android:layout_marginTop="48dp"
             android:layout_marginEnd="26dp"
-            android:src="@drawable/ic_trofeu_ouro"
+            android:src="@drawable/ic_gold_trophy"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

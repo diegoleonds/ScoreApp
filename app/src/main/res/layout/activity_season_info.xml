@@ -15,8 +15,8 @@
     <include
         android:id="@+id/includeSeasonPoints"
         layout="@layout/cardview_record_info"
-        android:layout_width="@dimen/cardview_recorde_width"
-        android:layout_height="@dimen/cardview_recorde_height"
+        android:layout_width="@dimen/cardview_record_width"
+        android:layout_height="@dimen/cardview_record_height"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/includeBackToolbar"
@@ -25,8 +25,8 @@
     <include
         android:id="@+id/includeSeasonFrequency"
         layout="@layout/cardview_record_info"
-        android:layout_width="@dimen/cardview_recorde_width"
-        android:layout_height="@dimen/cardview_recorde_height"
+        android:layout_width="@dimen/cardview_record_width"
+        android:layout_height="@dimen/cardview_record_height"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/includeSeasonPoints"

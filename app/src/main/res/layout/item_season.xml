@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="9dp"
-            android:src="@drawable/ic_trofeu_ouro"
+            android:src="@drawable/ic_gold_trophy"
             app:layout_constraintStart_toStartOf="@+id/seasonNumberTextView"
             app:layout_constraintTop_toBottomOf="@+id/seasonNumberTextView" />
 
@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
-            android:src="@drawable/ic_trofeu_madeira"
+            android:src="@drawable/ic_wood_trophy"
             app:layout_constraintStart_toStartOf="@+id/seasonGoldTrophyImgView"
             app:layout_constraintTop_toBottomOf="@+id/seasonGoldTrophyImgView" />
 

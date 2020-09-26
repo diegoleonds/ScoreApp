@@ -1,6 +1,6 @@
 <resources>
-    <dimen name="cardview_recorde_width">378dp</dimen>
-    <dimen name="cardview_recorde_height">175dp</dimen>
+    <dimen name="cardview_record_width">378dp</dimen>
+    <dimen name="cardview_record_height">175dp</dimen>
     <dimen name="cardview_points_width">378dp</dimen>
     <dimen name="cardview_points_height">121dp</dimen>
     <dimen name="cardview_radius">12dp</dimen>
