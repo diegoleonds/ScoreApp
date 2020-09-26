@@ -11,17 +11,15 @@ class GameRepositoryImpl(
 
     override suspend fun getById(id: Long): Game = dao.getById(id)
 
-    override suspend fun insertGame(game: Game) {
-        dao.insert(game)
-    }
+    override suspend fun insertGame(game: Game) = dao.insert(game)
 
-    override suspend fun deleteGame(game: Game) {
-        dao.delete(game)
-    }
+    override suspend fun deleteGame(game: Game) = dao.delete(game)
 
-    override suspend fun updateGame(game: Game) {
-        dao.update(game)
-    }
+    override suspend fun updateGame(game: Game) = dao.update(game)
 
+    override suspend fun getSeasonGameWithMorePoints(fkSeason: Long): Game =
+        dao.getSeasonGameWithMorePoints(fkSeason)
 
+    override suspend fun getSeasonGameWithLessPoints(fkSeason: Long): Game =
+        dao.getSeasonGameWithLessPoints(fkSeason)
 }
