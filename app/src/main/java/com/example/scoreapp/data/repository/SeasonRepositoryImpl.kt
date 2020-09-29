@@ -21,7 +21,6 @@ class SeasonRepositoryImpl() : SeasonRepository, KoinComponent {
         dao.delete(season)
     }
 
-    override suspend fun insertSeason(season: Season) {
+    override suspend fun insertSeason(season: Season): Long =
         dao.insert(season)
-    }
 }

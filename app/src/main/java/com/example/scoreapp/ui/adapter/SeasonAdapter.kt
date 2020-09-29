@@ -9,8 +9,9 @@ import com.example.scoreapp.ui.model.Season
 import kotlinx.android.synthetic.main.item_season.view.*
 
 class SeasonAdapter(
+    val click: Click<Season>
 ) : RecyclerView.Adapter<SeasonAdapter.SeasonViewHolder>() {
-    lateinit var seasons: List<Season>
+    lateinit var seasons: ArrayList<Season>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SeasonViewHolder {
         val itemView = LayoutInflater.from(parent.context)
@@ -22,6 +23,11 @@ class SeasonAdapter(
         val season = seasons.get(position)
         holder.maxRecordTextView.text = season.maxRecord.toString()
         holder.minRecordTextView.text = season.minRecord.toString()
+        holder.seasonNumberTextView.text =
+            holder.itemView.context.getString(R.string.seasonItemTextView) + " " + season.id.toString()
+
+        holder.cardview.setOnClickListener { click.simpleClick(season) }
+        holder.cardview.setOnLongClickListener { click.longClick(season) }
     }
 
     override fun getItemCount(): Int = if (this::seasons.isInitialized) seasons.size else 0
@@ -30,5 +36,6 @@ class SeasonAdapter(
         val maxRecordTextView = itemView.seasonMaximumRecordTextView
         val minRecordTextView = itemView.seasonMinimumRecordTextView
         val seasonNumberTextView = itemView.seasonNumberTextView
+        val cardview = itemView.seasonCardView
     }
 }

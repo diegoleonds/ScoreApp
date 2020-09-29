@@ -7,28 +7,30 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/seasonAppbar"
+        android:id="@+id/gamesAppbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/seasonToolbar"
+            android:id="@+id/gamesToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize">
 
             <TextView
+                android:id="@+id/gamesToolbarTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/app_name"
+                android:text="@string/games_toolbar_title"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/gameBackBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="?attr/actionButtonStyle"
                 android:src="@drawable/ic_baseline_arrow_back_24"
                 android:layout_gravity="end"
                 android:layout_marginRight="16dp"/>
@@ -38,8 +40,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/seasonGamesRecyclerView"
+        android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
-        android:layout_height="673dp"
+        android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seasonAppbar"
         tools:listitem="@layout/item_game" />
@@ -53,6 +56,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_input_add"
-        android:backgroundTint="@color/colorAccent"/>
+        android:backgroundTint="@color/fabColor"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,23 +1,27 @@
 package com.example.scoreapp.domain.usecase
 
 import com.example.scoreapp.data.model.Game
+import com.example.scoreapp.data.repository.GameRepositoryImpl
+import com.example.scoreapp.data.repository.SeasonRepositoryImpl
 import com.example.scoreapp.domain.repository.GameRepository
 import com.example.scoreapp.domain.repository.SeasonRepository
 import io.mockk.coEvery
 import io.mockk.mockk
 import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.runBlocking
+import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.koin.core.context.startKoin
+import org.koin.core.context.stopKoin
 import org.koin.dsl.module
 import com.example.scoreapp.data.model.Season as ModelSeason
 import com.example.scoreapp.ui.model.Season as ViewSeason
 
 class GetViewSeasonsUseCaseTest {
 
-    val seasonRepository = mockk<SeasonRepository>()
-    val gameRepository = mockk<GameRepository>()
+    val seasonRepository = mockk<SeasonRepositoryImpl>()
+    val gameRepository = mockk<GameRepositoryImpl>()
     val useCase = GetViewSeasonsUseCase()
 
     @Before
@@ -27,6 +31,9 @@ class GetViewSeasonsUseCaseTest {
             single { gameRepository }
         }) }
     }
+
+    @After
+    fun stopKoinAfterTest() = stopKoin()
 
     @Test
     fun shouldReturnViewSeasonWithMaxAndMinRecords() = runBlocking {

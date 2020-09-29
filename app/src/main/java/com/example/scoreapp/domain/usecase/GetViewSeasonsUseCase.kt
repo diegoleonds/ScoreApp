@@ -19,13 +19,13 @@ class GetViewSeasonsUseCase() : KoinComponent {
         val transform = SeasonTransform()
         val modelSeasons = seasonRepository.getAll()
         val viewSeasons = ArrayList<ViewSeason>()
-        var maxGame: Game
-        var minGame: Game
+        var maxGame: Game?
+        var minGame: Game?
         modelSeasons.forEach { season: ModelSeason ->
             maxGame = gameRepository.getSeasonGameWithMorePoints(season.id)
             minGame = gameRepository.getSeasonGameWithLessPoints(season.id)
             viewSeasons.add(
-                transform.transform(
+                transform.transformModelSeasonIntoViewSeason(
                     modelSeason = season,
                     maxGame = maxGame,
                     minGame = minGame

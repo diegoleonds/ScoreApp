@@ -6,6 +6,9 @@ import com.example.scoreapp.data.model.Game
 @Dao
 interface GameDAO : BaseDAO<Game> {
 
+    @Insert
+    suspend fun insert(game: Game)
+
     @Query("SELECT * FROM game WHERE fkSeason = :fkSeason")
     suspend fun getAllBySeason(fkSeason: Long): List<Game>
 

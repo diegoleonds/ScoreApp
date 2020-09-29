@@ -7,5 +7,5 @@ interface SeasonRepository {
     suspend fun getAll(): List<Season>
     suspend fun updateSeason(season: Season)
     suspend fun deleteSeason(season: Season)
-    suspend fun insertSeason(season: Season)
+    suspend fun insertSeason(season: Season): Long
 }

@@ -45,4 +45,12 @@ class SeasonDAOTest {
         val seasons = dao.getAll()
         assertEquals(expectedSeasons, seasons)
     }
+
+    @Test
+    fun checkingIfInsertIsReturningTheIdInserted() = runBlocking {
+        val expectedId: Long = 1
+        val insertedId = dao.insert(Season(expectedId))
+
+        assertEquals(expectedId, insertedId)
+    }
 }

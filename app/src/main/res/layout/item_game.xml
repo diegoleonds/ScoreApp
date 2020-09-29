@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gameCardView"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="384dp"
     android:layout_height="88dp"
     xmlns:tools="http://schemas.android.com/tools"
     app:cardCornerRadius="@dimen/cardview_radius"
     android:layout_marginLeft="13dp"
-    android:layout_marginTop="20dp">
+    android:layout_marginTop="20dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -34,6 +38,7 @@
             tools:text="10 pts" />
 
         <ImageView
+            android:id="@+id/gameTrophy"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginRight="23dp"

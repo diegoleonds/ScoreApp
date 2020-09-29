@@ -6,11 +6,14 @@ import com.example.scoreapp.data.model.Season as ModelSeason
 
 class SeasonTransform {
 
-    fun transform(modelSeason: ModelSeason, maxGame: Game, minGame: Game): ViewSeason {
+    fun transformModelSeasonIntoViewSeason(modelSeason: ModelSeason, maxGame: Game?, minGame: Game?): ViewSeason {
         return ViewSeason(
             id = modelSeason.id,
-            maxRecord = maxGame.points,
-            minRecord = minGame.points
+            maxRecord = maxGame?.points ?: 0,
+            minRecord = minGame?.points ?: 0
         )
     }
+
+    fun transformViewSeasonIntoModelSeason(viewSeason: ViewSeason): ModelSeason =
+        ModelSeason(viewSeason.id)
 }

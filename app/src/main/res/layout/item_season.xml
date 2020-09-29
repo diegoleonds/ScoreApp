@@ -1,66 +1,76 @@
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="358dp"
-    android:layout_height="120dp"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginLeft="26dp"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
     android:layout_marginTop="20dp"
-    app:cardCornerRadius="@dimen/cardview_radius">
+    android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/seasonCardView"
+        android:layout_width="358dp"
+        android:layout_height="120dp"
+        app:cardCornerRadius="@dimen/cardview_radius"
+        android:layout_gravity="center_horizontal"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground">
 
-        <TextView
-            android:id="@+id/seasonNumberTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="11dp"
-            android:layout_marginTop="11dp"
-            android:textAppearance="@style/cardViewTitleAppearance"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="@string/seasonItemTextView" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/seasonGoldTrophyImgView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
-            android:src="@drawable/ic_gold_trophy"
-            app:layout_constraintStart_toStartOf="@+id/seasonNumberTextView"
-            app:layout_constraintTop_toBottomOf="@+id/seasonNumberTextView" />
+            <TextView
+                android:id="@+id/seasonNumberTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="7dp"
+                android:text="@string/seasonItemTextView"
+                android:textAppearance="@style/cardViewTitleAppearance"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/seasonMaximumRecordTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/seasonGoldTrophyImgView"
-            app:layout_constraintStart_toEndOf="@+id/seasonGoldTrophyImgView"
-            app:layout_constraintTop_toTopOf="@+id/seasonGoldTrophyImgView"
-            android:textAppearance="@style/cardViewPtsAppearance"
-            tools:text="12 pts" />
+            <ImageView
+                android:id="@+id/seasonGoldTrophyImgView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:src="@drawable/ic_gold_trophy"
+                app:layout_constraintStart_toStartOf="@+id/seasonNumberTextView"
+                app:layout_constraintTop_toBottomOf="@+id/seasonNumberTextView" />
 
-        <ImageView
-            android:id="@+id/seasonWoodTrophyImgView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
-            android:src="@drawable/ic_wood_trophy"
-            app:layout_constraintStart_toStartOf="@+id/seasonGoldTrophyImgView"
-            app:layout_constraintTop_toBottomOf="@+id/seasonGoldTrophyImgView" />
+            <TextView
+                android:id="@+id/seasonMaximumRecordTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:textAppearance="@style/cardViewPtsAppearance"
+                app:layout_constraintBottom_toBottomOf="@+id/seasonGoldTrophyImgView"
+                app:layout_constraintStart_toEndOf="@+id/seasonGoldTrophyImgView"
+                app:layout_constraintTop_toTopOf="@+id/seasonGoldTrophyImgView"
+                tools:text="12 pts" />
 
-        <TextView
-            android:id="@+id/seasonMinimumRecordTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/seasonWoodTrophyImgView"
-            app:layout_constraintStart_toEndOf="@+id/seasonWoodTrophyImgView"
-            app:layout_constraintTop_toTopOf="@+id/seasonWoodTrophyImgView"
-            android:textAppearance="@style/cardViewPtsAppearance"
-            tools:text="2 pts" />
+            <ImageView
+                android:id="@+id/seasonWoodTrophyImgView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:src="@drawable/ic_wood_trophy"
+                app:layout_constraintStart_toStartOf="@+id/seasonGoldTrophyImgView"
+                app:layout_constraintTop_toBottomOf="@+id/seasonGoldTrophyImgView" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:id="@+id/seasonMinimumRecordTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:textAppearance="@style/cardViewPtsAppearance"
+                app:layout_constraintBottom_toBottomOf="@+id/seasonWoodTrophyImgView"
+                app:layout_constraintStart_toEndOf="@+id/seasonWoodTrophyImgView"
+                app:layout_constraintTop_toTopOf="@+id/seasonWoodTrophyImgView"
+                tools:text="2 pts" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

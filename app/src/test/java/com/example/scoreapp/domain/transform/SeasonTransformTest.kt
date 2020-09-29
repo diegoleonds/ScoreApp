@@ -3,7 +3,6 @@ package com.example.scoreapp.domain.transform
 import com.example.scoreapp.data.model.Game
 import org.junit.Assert.*
 import org.junit.Test
-import kotlin.math.min
 import com.example.scoreapp.ui.model.Season as ViewSeason
 import com.example.scoreapp.data.model.Season as ModelSeason
 
@@ -12,7 +11,7 @@ class SeasonTransformTest {
     val transform: SeasonTransform = SeasonTransform()
 
     @Test
-    fun verifyTransform(){
+    fun shouldTransformModelSeasonIntoViewSeason(){
         val modelSeason = ModelSeason(id = 1)
         val maxGame = Game(
             id = 0,
@@ -28,14 +27,27 @@ class SeasonTransformTest {
             maxRecord = false,
             minRecord = true
         )
-
         val expected = ViewSeason(
             id = 1,
             maxRecord = maxGame.points,
             minRecord = minGame.points
         )
 
-        val viewSeason = transform.transform(modelSeason, maxGame, minGame)
+        val viewSeason = transform.transformModelSeasonIntoViewSeason(modelSeason, maxGame, minGame)
         assertEquals(expected, viewSeason)
+    }
+
+    @Test
+    fun shouldTransformViewSeasonIntoModelSeason(){
+        val viewSeason = ViewSeason(
+            id = 1,
+            maxRecord = 10,
+            minRecord = 2
+        )
+        val expectedModelSeason = ModelSeason(
+            id = 1
+        )
+
+        assertEquals(expectedModelSeason, transform.transformViewSeasonIntoModelSeason(viewSeason))
     }
 }

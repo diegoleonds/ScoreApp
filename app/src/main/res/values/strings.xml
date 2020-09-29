@@ -5,4 +5,10 @@
     <string name="record_max">Maximum\nRecord</string>
     <string name="game_item_text_view">Game</string>
     <string name="seasonItemTextView">Season</string>
+    <string name="accept">yes</string>
+    <string name="decline">no</string>
+    <string name="delete_season_question_dialog">Do you want to delete this season?</string>
+    <string name="delete_season_title_dialog">Delete season</string>
+    <string name="games_toolbar_title">Games</string>
+    <string name="parcelable_season">season</string>
 </resources>

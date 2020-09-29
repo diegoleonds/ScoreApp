@@ -8,9 +8,6 @@ import androidx.room.Update
 @Dao
 interface BaseDAO<T> {
 
-    @Insert
-    suspend fun insert(entity: T)
-
     @Delete
     suspend fun delete(entity: T)
 
