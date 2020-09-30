@@ -6,12 +6,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.scoreapp.R
 import com.example.scoreapp.data.model.Game
+import com.example.scoreapp.ui.model.Season
 import kotlinx.android.synthetic.main.item_game.view.*
 
 class GameAdapter(
-    val click: Click<Game>
+    private val click: AdapterClick<Game>
 ) : RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
     lateinit var games: ArrayList<Game>
+    var maxGamePosition: Int? = null
+    var minGamePoisition: Int? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
         val itemView = LayoutInflater.from(parent.context)
@@ -26,10 +29,36 @@ class GameAdapter(
         holder.gameNumberTextView.text =
             holder.itemView.context.getString(R.string.game_item_text_view) + " " + game.id
         holder.gamePointsTextView.text = game.points.toString()
+        holder.gameTrophyImageView.visibility = View.GONE
 
+        setTrophyIconToMaxRecordGame(position, holder)
+        setTrophyIconToMinRecordGame(position, holder)
         holder.gameCardView.setOnClickListener{ click.simpleClick(game) }
         holder.gameCardView.setOnLongClickListener { click.longClick(game) }
     }
+
+    fun setTrophyIconToMaxRecordGame(position: Int, holder: GameViewHolder){
+        maxGamePosition?.let {
+            if (position == it){
+                holder.gameTrophyImageView.setImageResource(R.drawable.ic_gold_trophy)
+                holder.gameTrophyImageView.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    fun setTrophyIconToMinRecordGame(position: Int, holder: GameViewHolder){
+        minGamePoisition?.let {
+            if (position == it){
+                holder.gameTrophyImageView.setImageResource(R.drawable.ic_wood_trophy)
+                holder.gameTrophyImageView.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    fun removeTrophyFromItem(position: Int?){
+        position?.let { notifyItemChanged(position) }
+    }
+
 
     class GameViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val gameNumberTextView = itemView.gameItemTextView
