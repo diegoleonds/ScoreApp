@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/back_appbar"
+    android:id="@+id/backAppbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/back_toolbar"
+        android:id="@+id/backToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
 
@@ -18,7 +18,7 @@
             tools:text="@string/app_name"
             android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/backToolbarButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
