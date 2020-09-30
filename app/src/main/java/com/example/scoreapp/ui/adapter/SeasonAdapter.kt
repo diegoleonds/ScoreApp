@@ -9,7 +9,7 @@ import com.example.scoreapp.ui.model.Season
 import kotlinx.android.synthetic.main.item_season.view.*
 
 class SeasonAdapter(
-    val click: Click<Season>
+    val click: AdapterClick<Season>
 ) : RecyclerView.Adapter<SeasonAdapter.SeasonViewHolder>() {
     lateinit var seasons: ArrayList<Season>
 
