@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#f2f2f2</color>
     <color name="colorPrimaryDark">#3700B3</color>
-    <color name="fabColor">#FFAB91</color>
+    <color name="colorAccent">#FFAB91</color>
 
     <color name="recyclerViewScroll">#FAFAFA</color>
     <color name="darkBackground">#121212</color>

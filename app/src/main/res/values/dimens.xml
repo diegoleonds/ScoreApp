@@ -1,8 +1,10 @@
 <resources>
-    <dimen name="cardview_record_width">378dp</dimen>
+    <dimen name="cardview_record_width">370dp</dimen>
     <dimen name="cardview_record_height">175dp</dimen>
-    <dimen name="cardview_points_width">378dp</dimen>
+    <dimen name="cardview_points_width">370dp</dimen>
     <dimen name="cardview_points_height">121dp</dimen>
     <dimen name="cardview_radius">12dp</dimen>
+    <dimen name="item_game_height">88dp</dimen>
+    <dimen name="item_season_height">120dp</dimen>
     <dimen name="fab_margin">30dp</dimen>
 </resources>
