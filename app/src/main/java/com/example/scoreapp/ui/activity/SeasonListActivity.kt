@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.scoreapp.R
-import com.example.scoreapp.ui.adapter.Click
+import com.example.scoreapp.ui.adapter.AdapterClick
 import com.example.scoreapp.ui.adapter.SeasonAdapter
 import com.example.scoreapp.ui.model.Season
 import com.example.scoreapp.ui.viewmodel.SeasonListViewModel
@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class SeasonListActivity : AppCompatActivity(), Click<Season> {
+class SeasonListActivity : AppCompatActivity(), AdapterClick<Season> {
     private val viewModel: SeasonListViewModel by viewModel()
 
     //View items
@@ -36,6 +36,7 @@ class SeasonListActivity : AppCompatActivity(), Click<Season> {
         initViews()
         initRecyclerView()
         setFabClick()
+        setRecyclerViewData()
     }
 
     override fun onResume() {
@@ -117,7 +118,6 @@ class SeasonListActivity : AppCompatActivity(), Click<Season> {
     override fun longClick(season: Season): Boolean {
         MaterialAlertDialogBuilder(this)
             .setTitle(resources.getString(R.string.delete_season_title_dialog))
-            .setMessage(resources.getString(R.string.delete_season_question_dialog))
             .setNegativeButton(resources.getString(R.string.decline)) { dialog, which ->
             }
             .setPositiveButton(resources.getString(R.string.accept)) { dialog, which ->
