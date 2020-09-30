@@ -4,8 +4,8 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class Season(val id: Long,
-                  val maxRecord: Int,
-                  val minRecord: Int) : Parcelable{
+                  var maxRecord: Int,
+                  var minRecord: Int) : Parcelable{
     constructor(parcel: Parcel) : this(
     parcel.readLong(),
     parcel.readInt(),
