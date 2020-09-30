@@ -1,6 +1,6 @@
 package com.example.scoreapp.ui.adapter
 
-interface Click<T> {
+interface AdapterClick<T> {
     fun simpleClick(type: T)
     fun longClick(type: T): Boolean
 }
