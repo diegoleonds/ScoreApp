@@ -3,8 +3,10 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
         <item name="android:statusBarColor">@color/darkBackground</item>
         <item name="useMaterialThemeColors">true</item>
+        <item name="imageButtonStyle">?attr/actionButtonStyle</item>
     </style>
     
     <style name="cardViewPtsAppearance">
