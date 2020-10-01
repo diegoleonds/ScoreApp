@@ -4,19 +4,22 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.scoreapp.data.model.Game
 import com.example.scoreapp.domain.usecase.CreateGameUseCase
+import com.example.scoreapp.domain.usecase.DeleteGameUseCase
 import com.example.scoreapp.domain.usecase.GetGamesBySeasonUseCase
 import com.example.scoreapp.ui.model.Season
 
 class GameListViewModel : ViewModel() {
     val createGameUseCase = CreateGameUseCase()
     val getGamesUseCase = GetGamesBySeasonUseCase()
+    val deleteGameUseCase = DeleteGameUseCase()
+
     val season: MutableLiveData<Season> = MutableLiveData()
     val games: MutableLiveData<ArrayList<Game>> = MutableLiveData()
+
 
     suspend fun updateGamesList() {
         season.value?.let {
             games.postValue(ArrayList(getGamesUseCase.getGamesBySeason(it.id)))
-            updateGamesOfCurrentSeason()
         }
     }
 
@@ -25,7 +28,12 @@ class GameListViewModel : ViewModel() {
         updateGamesList()
     }
 
-    fun getGameWithMaxRecord(): Int? {
+    suspend fun deleteGame(game: Game) {
+        deleteGameUseCase.delete(game)
+        updateGamesList()
+    }
+
+    fun getPositionOfGameWithMaxRecord(): Int? {
         games.value?.let {
             if (it.size < 2){
                 return null
@@ -40,7 +48,7 @@ class GameListViewModel : ViewModel() {
         return null
     }
 
-    fun getGameWithMinRecord(): Int? {
+    fun getPositionOfGameWithMinRecord(): Int? {
         games.value?.let {
             if (it.size < 2){
                 return null
@@ -58,13 +66,17 @@ class GameListViewModel : ViewModel() {
     fun updateGamesOfCurrentSeason() {
         games.value?.let {
             season.value?.run {
-                for (game: Game in it) {
-                    if (game.points > this.maxRecord) {
-                        this.maxRecord = game.points
-                    } else if (game.points < this.minRecord) {
-                        this.minRecord = game.points
+                var maxPointsGame: Int = it.get(0).points
+                var minPointsGame: Int = it.get(0).points
+                for (i in 1 until it.size){
+                    if (maxPointsGame < it.get(i).points){
+                        maxPointsGame = it.get(i).points
+                    } else if(minPointsGame > it.get(i).points){
+                        minPointsGame = it.get(i).points
                     }
                 }
+                this.maxRecord = maxPointsGame
+                this.minRecord = minPointsGame
             }
         }
     }
