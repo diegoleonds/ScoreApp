@@ -16,16 +16,12 @@ data class Game(
         childColumns = ["fkSeason"]
     )
     val fkSeason: Long,
-    val points: Int,
-    val maxRecord: Boolean,
-    val minRecord: Boolean
+    val points: Int
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readLong(),
         parcel.readLong(),
-        parcel.readInt(),
-        parcel.readByte() != 0.toByte(),
-        parcel.readByte() != 0.toByte()
+        parcel.readInt()
     ) {
     }
 
@@ -33,8 +29,6 @@ data class Game(
         parcel.writeLong(id)
         parcel.writeLong(fkSeason)
         parcel.writeInt(points)
-        parcel.writeByte(if (maxRecord) 1 else 0)
-        parcel.writeByte(if (minRecord) 1 else 0)
     }
 
     override fun describeContents(): Int {
@@ -50,4 +44,5 @@ data class Game(
             return arrayOfNulls(size)
         }
     }
+
 }
