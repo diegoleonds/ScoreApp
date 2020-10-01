@@ -1,51 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/gameCardView"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="384dp"
-    android:layout_height="88dp"
     xmlns:tools="http://schemas.android.com/tools"
-    app:cardCornerRadius="@dimen/cardview_radius"
-    android:layout_marginLeft="13dp"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/item_game_height"
     android:layout_marginTop="20dp"
-    android:clickable="true"
-    android:focusable="true"
-    android:foreground="?attr/selectableItemBackground">
+    android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/gameCardView"
+        android:layout_width="360dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardCornerRadius="@dimen/cardview_radius">
 
-        <TextView
-            android:id="@+id/gameItemTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:textAppearance="@style/cardViewTitleAppearance"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="@string/game_item_text_view"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/gamePointsItemTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textAppearance="@style/cardViewPtsAppearance"
-            app:layout_constraintStart_toStartOf="@+id/gameItemTextView"
-            app:layout_constraintTop_toBottomOf="@+id/gameItemTextView"
-            tools:text="10 pts" />
+            <TextView
+                android:id="@+id/gameItemTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/game_item_text_view"
+                android:textAppearance="@style/cardViewTitleAppearance"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/gameTrophy"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginRight="23dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_gold_trophy" />
+            <TextView
+                android:id="@+id/gamePointsItemTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textAppearance="@style/cardViewPtsAppearance"
+                app:layout_constraintStart_toStartOf="@+id/gameItemTextView"
+                app:layout_constraintTop_toBottomOf="@+id/gameItemTextView"
+                tools:text="10 pts" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</com.google.android.material.card.MaterialCardView>
+            <ImageView
+                android:id="@+id/gameTrophy"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="23dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_gold_trophy" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>
