@@ -45,11 +45,12 @@ class GameListActivity : AppCompatActivity(), DialogClick, AdapterClick<Game> {
         setBackBtnClick()
         setFabClick()
         setSeasonChartButtonClick()
+        observeViewModelGameList()
     }
 
     override fun onResume() {
         super.onResume()
-        setRecyclerViewData()
+        updateViewModelGameList()
         clickAnotherActivityEnable = true
     }
 
@@ -65,20 +66,28 @@ class GameListActivity : AppCompatActivity(), DialogClick, AdapterClick<Game> {
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
-    private fun setRecyclerViewData() {
+    private fun observeViewModelGameList() {
+        viewModel.games.observe(this, Observer {
+            it?.let {
+                updateRecyclerViewAdapter(it)
+                viewModel.updateGamesOfCurrentSeason()
+            }
+        })
+    }
+
+    private fun updateRecyclerViewAdapter(games: ArrayList<Game>) {
+        adapter.games = games
+        adapter.removeTrophyFromItem(adapter.maxGamePosition)
+        adapter.removeTrophyFromItem(adapter.minGamePoisition)
+        adapter.maxGamePosition = viewModel.getPositionOfGameWithMaxRecord()
+        adapter.minGamePoisition = viewModel.getPositionOfGameWithMinRecord()
+        adapter.notifyDataSetChanged()
+    }
+
+    private fun updateViewModelGameList() {
         CoroutineScope(Dispatchers.IO).launch {
             viewModel.updateGamesList()
         }
-        viewModel.games.observe(this, Observer {
-            it?.let {
-                adapter.games = it
-                adapter.removeTrophyFromItem(adapter.maxGamePosition)
-                adapter.removeTrophyFromItem(adapter.minGamePoisition)
-                adapter.maxGamePosition = viewModel.getGameWithMaxRecord()
-                adapter.minGamePoisition = viewModel.getGameWithMinRecord()
-                adapter.notifyDataSetChanged()
-            }
-        })
     }
 
     private fun setSeasonChartButtonClick() {
@@ -132,7 +141,9 @@ class GameListActivity : AppCompatActivity(), DialogClick, AdapterClick<Game> {
             .setNegativeButton(resources.getString(R.string.decline)) { dialog, which ->
             }
             .setPositiveButton(resources.getString(R.string.accept)) { dialog, which ->
-                viewModel.games.value?.remove(game)
+                CoroutineScope(Dispatchers.IO).launch {
+                    viewModel.deleteGame(game)
+                }
             }
             .show()
         return true
