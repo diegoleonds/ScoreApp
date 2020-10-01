@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/seasonInfoTitleTextView"
+            android:id="@+id/recordInfoTitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
@@ -50,8 +50,8 @@
             android:textStyle="bold"
             android:textColor="@color/material_on_surface_emphasis_high_type"
             app:layout_constraintBottom_toBottomOf="@+id/woodTrophyImgView"
-            app:layout_constraintEnd_toEndOf="@+id/seasonInfoTitleTextView"
-            app:layout_constraintStart_toStartOf="@+id/seasonInfoTitleTextView"
+            app:layout_constraintEnd_toEndOf="@+id/recordInfoTitleTextView"
+            app:layout_constraintStart_toStartOf="@+id/recordInfoTitleTextView"
             app:layout_constraintTop_toTopOf="@+id/woodTrophyImgView"
             tools:text="2 - 4"/>
 
@@ -68,7 +68,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="7dp"
             android:text="@string/record_max"
             android:textAppearance="@style/recordCardViewAppearance"
             app:layout_constraintEnd_toEndOf="@+id/goldTrophyImgView"
