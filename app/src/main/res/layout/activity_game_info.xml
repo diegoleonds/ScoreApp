@@ -23,6 +23,7 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbarInclude" />
 
     <include
+        android:id="@+id/include_points_cardview"
         layout="@layout/cardview_points"
         android:layout_width="@dimen/cardview_points_width"
         android:layout_height="@dimen/cardview_points_height"
@@ -40,6 +41,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="@dimen/fab_margin"
-        android:backgroundTint="@color/fabColor"/>
+        android:backgroundTint="@color/colorAccent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
