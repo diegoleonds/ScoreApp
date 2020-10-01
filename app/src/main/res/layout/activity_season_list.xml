@@ -36,14 +36,16 @@
         android:layout_marginTop="?attr/actionBarSize"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/seasonAppbar"
-        tools:listitem="@layout/item_season" />
+        tools:listitem="@layout/item_season"
+        android:clipToPadding="false"
+        android:paddingBottom="30dp"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/seasonAddFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
-        android:backgroundTint="@color/fabColor"
+        android:backgroundTint="@color/colorAccent"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

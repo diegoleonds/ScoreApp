@@ -7,45 +7,52 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/gamesAppbar"
+        android:id="@+id/gameListAppbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/gamesToolbar"
+            android:id="@+id/gameListToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize">
 
             <TextView
-                android:id="@+id/gamesToolbarTitle"
+                android:id="@+id/gameListToolbarTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/games_toolbar_title"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                tools:text="@string/app_name" />
 
             <ImageButton
-                android:id="@+id/gameBackBtn"
+                android:id="@+id/gameListToolbarBackButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="?attr/actionButtonStyle"
-                android:src="@drawable/ic_baseline_arrow_back_24"
+                android:src="@drawable/ic_baseline_arrow_back_24" />
+
+            <ImageButton
+                android:id="@+id/gameListChartBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_marginRight="16dp"/>
+                android:src="@drawable/ic_baseline_insert_chart_outlined_24"
+                android:layout_marginRight="10dp"/>
 
         </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/seasonGamesRecyclerView"
+        android:id="@+id/gamesRecyclerView"
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seasonAppbar"
-        tools:listitem="@layout/item_game" />
+        tools:listitem="@layout/item_game"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/item_game_height"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/gameAddFab"
@@ -56,6 +63,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_input_add"
-        android:backgroundTint="@color/fabColor"/>
+        android:backgroundTint="@color/colorAccent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
