@@ -10,5 +10,5 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
     viewModel { SeasonListViewModel() }
-    viewModel { GameListViewModel() }
+    viewModel { GameListViewModel(get(), get(), get()) }
 }

@@ -8,14 +8,13 @@ import com.example.scoreapp.domain.usecase.DeleteGameUseCase
 import com.example.scoreapp.domain.usecase.GetGamesBySeasonUseCase
 import com.example.scoreapp.ui.model.Season
 
-class GameListViewModel : ViewModel() {
-    val createGameUseCase = CreateGameUseCase()
-    val getGamesUseCase = GetGamesBySeasonUseCase()
-    val deleteGameUseCase = DeleteGameUseCase()
-
+class GameListViewModel(
+    val createGameUseCase: CreateGameUseCase,
+    val getGamesUseCase: GetGamesBySeasonUseCase,
+    val deleteGameUseCase: DeleteGameUseCase
+) : ViewModel() {
     val season: MutableLiveData<Season> = MutableLiveData()
     val games: MutableLiveData<ArrayList<Game>> = MutableLiveData()
-
 
     suspend fun updateGamesList() {
         season.value?.let {
