@@ -16,16 +16,12 @@ class SeasonTransformTest {
         val maxGame = Game(
             id = 0,
             fkSeason = 0,
-            points = 10,
-            maxRecord = true,
-            minRecord = false
+            points = 10
         )
         val minGame = Game(
             id = 1,
             fkSeason = 0,
-            points = 5,
-            maxRecord = false,
-            minRecord = true
+            points = 5
         )
         val expected = ViewSeason(
             id = 1,

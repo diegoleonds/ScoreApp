@@ -6,7 +6,7 @@ import androidx.test.core.app.ApplicationProvider
 import com.example.scoreapp.data.database.AppDatabase
 import com.example.scoreapp.data.database.GameDAO
 import com.example.scoreapp.data.model.Game
-import junit.framework.Assert.assertEquals
+import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
@@ -36,8 +36,6 @@ class GameDAOTest {
         val expectedGame = Game(
             1,
             fkSeason = 0,
-            maxRecord = true,
-            minRecord = false,
             points = 12
         )
         dao.insert(expectedGame)
@@ -49,16 +47,14 @@ class GameDAOTest {
     @Test
     fun getGamesBySeason() = runBlocking {
 
-        var expectedGames = ArrayList<Game>()
+        val expectedGames = ArrayList<Game>()
         var game: Game
 
         for (i in 1..10) {
             game = Game(
                 id = i.toLong(),
                 fkSeason = 1,
-                points = 1,
-                minRecord = false,
-                maxRecord = false
+                points = 1
             )
             expectedGames.add(game)
             dao.insert(game)
@@ -73,9 +69,7 @@ class GameDAOTest {
         val expectedGame = Game(
             id = 1,
             fkSeason = 1,
-            points = 100,
-            maxRecord = true,
-            minRecord = false
+            points = 100
         )
         dao.insert(expectedGame)
 
@@ -83,9 +77,7 @@ class GameDAOTest {
             dao.insert(Game(
                 id = i.toLong(),
                 fkSeason = 1,
-                points = 100,
-                minRecord = false,
-                maxRecord = false
+                points = 100
             ))
         }
         val game = dao.getSeasonGameWithMorePoints(1)
@@ -97,9 +89,7 @@ class GameDAOTest {
         val expectedGame = Game(
             id = 1,
             fkSeason = 1,
-            points = 99,
-            maxRecord = false,
-            minRecord = true
+            points = 99
         )
         dao.insert(expectedGame)
 
@@ -107,9 +97,7 @@ class GameDAOTest {
             dao.insert(Game(
                 id = i.toLong(),
                 fkSeason = 1,
-                points = 100,
-                minRecord = false,
-                maxRecord = false
+                points = 100
             ))
         }
         val game = dao.getSeasonGameWithLessPoints(1)

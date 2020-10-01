@@ -3,11 +3,9 @@ package com.example.scoreapp.domain.usecase
 import com.example.scoreapp.data.model.Game
 import com.example.scoreapp.data.repository.GameRepositoryImpl
 import com.example.scoreapp.data.repository.SeasonRepositoryImpl
-import com.example.scoreapp.domain.repository.GameRepository
-import com.example.scoreapp.domain.repository.SeasonRepository
 import io.mockk.coEvery
 import io.mockk.mockk
-import junit.framework.Assert.assertEquals
+import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
@@ -43,31 +41,23 @@ class GetViewSeasonsUseCaseTest {
         val seasonOneMaxGame = Game(
             id = 1,
             fkSeason = 1,
-            points = 10,
-            maxRecord = true,
-            minRecord = false
+            points = 10
         )
         val seasonOneMinGame = Game(
             id = 2,
             fkSeason = 1,
-            points = 2,
-            maxRecord = false,
-            minRecord = true
+            points = 2
         )
 
         val seasonTwoMaxGame = Game(
             id = 3,
             fkSeason = 2,
-            points = 10,
-            maxRecord = true,
-            minRecord = false
+            points = 10
         )
         val seasonTwoMinGame = Game(
             id = 4,
             fkSeason = 1,
-            points = 1,
-            maxRecord = false,
-            minRecord = true
+            points = 1
         )
 
         coEvery { gameRepository.getSeasonGameWithMorePoints(1) } returns seasonOneMaxGame

@@ -15,9 +15,7 @@ class CreateGameUseCase : KoinComponent {
             repository.insertGame(
                 Game(
                     fkSeason = it.id,
-                    points = points,
-                    maxRecord = (points > it.maxRecord),
-                    minRecord = (points < it.minRecord)
+                    points = points
                 )
             )
         }
