@@ -10,12 +10,13 @@ import org.koin.core.KoinComponent
 import org.koin.core.inject
 
 
-class SeasonListViewModel() : ViewModel(), KoinComponent {
+class SeasonListViewModel(
+    val getViewsSeasonsUseCase: GetViewSeasonsUseCase,
+    val createSeasonUseCase: CreateSeasonUseCase,
+    val delteSeasonUseCase: DeleteSeasonUseCase
+) : ViewModel() {
     val seasonsList: MutableLiveData<List<Season>?> = MutableLiveData()
     val seasonId: MutableLiveData<Long> = MutableLiveData()
-    val getViewsSeasonsUseCase by inject<GetViewSeasonsUseCase>()
-    val createSeasonUseCase by inject<CreateSeasonUseCase>()
-    val delteSeasonUseCase by inject<DeleteSeasonUseCase>()
 
     suspend fun updateSeasonsList() {
         seasonsList.postValue(getViewsSeasonsUseCase.getViewSeasons())

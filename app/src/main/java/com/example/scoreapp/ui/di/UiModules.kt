@@ -9,6 +9,6 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {
-    viewModel { SeasonListViewModel() }
+    viewModel { SeasonListViewModel(get(), get(), get()) }
     viewModel { GameListViewModel(get(), get(), get()) }
 }

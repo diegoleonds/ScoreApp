@@ -26,7 +26,11 @@ class SeasonListViewModelTest {
     val getViewSeasonsUseCase = mockk<GetViewSeasonsUseCase>()
     val createSeasonUseCase = mockk<CreateSeasonUseCase>()
     val deleteSeasonUseCase = mockk<DeleteSeasonUseCase>()
-    val viewModel = SeasonListViewModel()
+    val viewModel = SeasonListViewModel(
+        getViewsSeasonsUseCase = getViewSeasonsUseCase,
+        createSeasonUseCase = createSeasonUseCase,
+        delteSeasonUseCase = deleteSeasonUseCase
+    )
 
     @Before
     fun init() {
