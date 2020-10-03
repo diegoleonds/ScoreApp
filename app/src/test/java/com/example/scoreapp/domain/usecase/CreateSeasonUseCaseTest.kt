@@ -1,35 +1,15 @@
 package com.example.scoreapp.domain.usecase
 
 import com.example.scoreapp.data.repository.SeasonRepositoryImpl
-import com.example.scoreapp.ui.model.Season
-import io.mockk.*
+import io.mockk.coEvery
+import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
-import org.junit.After
-import org.junit.Assert.*
-import org.junit.Before
+import org.junit.Assert.assertEquals
 import org.junit.Test
-import org.koin.core.context.startKoin
-import org.koin.core.context.stopKoin
-import org.koin.dsl.module
 
 class CreateSeasonUseCaseTest {
-
     val repository = mockk<SeasonRepositoryImpl>()
-    val useCase = CreateSeasonUseCase()
-
-    @Before
-    fun init(){
-        startKoin {
-            modules(
-                module {
-                    single { repository }
-                }
-            )
-        }
-    }
-
-    @After
-    fun stopKoinAfterTest() = stopKoin()
+    val useCase = CreateSeasonUseCase(repository)
 
     @Test
     fun createTest() = runBlocking {

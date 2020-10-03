@@ -1,13 +1,11 @@
 package com.example.scoreapp.domain.usecase
 
 import com.example.scoreapp.data.model.Game
-import com.example.scoreapp.data.repository.GameRepositoryImpl
-import org.koin.core.KoinComponent
-import org.koin.core.inject
+import com.example.scoreapp.domain.repository.GameRepository
 
-class DeleteGameUseCase : KoinComponent {
-    val repository by inject<GameRepositoryImpl>()
-
+class DeleteGameUseCase(
+    val repository: GameRepository
+){
     suspend fun delete(game: Game){
         repository.deleteGame(game)
      }
