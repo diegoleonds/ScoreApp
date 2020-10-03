@@ -66,6 +66,8 @@ class GameListViewModel(
         games.value?.let {
             season.value?.run {
                 if (it.size == 0) {
+                    this.minRecord = 0
+                    this.maxRecord = 0
                     return
                 }
                 var maxPointsGame: Int = it.get(0).points
