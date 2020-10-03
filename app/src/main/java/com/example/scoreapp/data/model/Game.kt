@@ -16,7 +16,7 @@ data class Game(
         childColumns = ["fkSeason"]
     )
     val fkSeason: Long,
-    val points: Int
+    var points: Int
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readLong(),
