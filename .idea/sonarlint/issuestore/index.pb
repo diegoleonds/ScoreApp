@@ -91,9 +91,11 @@ U
 %app/src/main/res/layout/item_game.xml,7\7\77b70c3793a10be498741fb3aa4d954f67f04e59
 W
 'app/src/main/res/layout/item_season.xml,3\3\3349479ab6809bbfa67bb20a6481b05db85cc45f
-`
-0app/src/main/res/layout/cardview_record_info.xml,f\e\fe57f08550723cd9e1c1d605dbdea3724a487f54
 z
 Japp/src/main/java/com/example/scoreapp/domain/usecase/DeleteGameUseCase.kt,1\c\1c0835b873dc10190857f4a8f702ea3719d4e44c
 |
 Lapp/src/test/java/com/example/scoreapp/ui/viewmodel/GameListViewModelTest.kt,c\5\c53415fbae288270e91e7083ec7fa8564f0b08c7
+z
+Japp/src/main/java/com/example/scoreapp/ui/viewmodel/SeasonInfoViewModel.kt,3\7\37d8f3a243e5876e5b0a263f1852224c512965f8
+~
+Napp/src/test/java/com/example/scoreapp/ui/viewmodel/SeasonInfoViewModelTest.kt,f\2\f256beac731b6022d74258f33766f7f41c0431cd

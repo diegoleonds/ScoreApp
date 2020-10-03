@@ -10,4 +10,6 @@ val useCaseModule = module {
     factory { CreateGameUseCase() }
     factory { GetGamesBySeasonUseCase() }
     factory { DeleteGameUseCase() }
+    factory { UpdateGameUseCase(get()) }
+    factory { GetUpdatedViewSeason(get()) }
 }
