@@ -11,7 +11,11 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.dialog_game.*
 
-class GameDialog(var title: String, val click: DialogClick) : DialogFragment() {
+class GameDialog(
+    var title: String,
+    val click: DialogClick,
+    val actualText: String = ""
+) : DialogFragment() {
 
     lateinit var textField: TextInputEditText
 
@@ -19,6 +23,7 @@ class GameDialog(var title: String, val click: DialogClick) : DialogFragment() {
         val inflater = (requireActivity().layoutInflater)
         val view = inflater.inflate(R.layout.dialog_game, null)
         textField = view.findViewById(R.id.game_dialog_textfield)
+        textField.setText(actualText)
         return MaterialAlertDialogBuilder(requireContext())
             .setTitle(title)
             .setNegativeButton(resources.getString(R.string.decline)) { dialog, which ->
