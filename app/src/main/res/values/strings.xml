@@ -18,4 +18,5 @@
     <string name="record_frequency_cardview_title">Frequency</string>
     <string name="average_score_cardview_title">" Average Score:"</string>
     <string name="delete_game_title_dialog">Delete this game?</string>
+    <string name="edit_game_title_dialog">Edit game</string>
 </resources>
