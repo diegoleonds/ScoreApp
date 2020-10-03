@@ -18,7 +18,6 @@ import org.koin.dsl.module
 
 
 class SeasonListViewModelTest {
-
     @Suppress("unused")
     @get:Rule
     val instantTaskExecutorRule: InstantTaskExecutorRule = InstantTaskExecutorRule()
@@ -31,22 +30,6 @@ class SeasonListViewModelTest {
         createSeasonUseCase = createSeasonUseCase,
         delteSeasonUseCase = deleteSeasonUseCase
     )
-
-    @Before
-    fun init() {
-        startKoin {
-            modules(
-                module {
-                    factory { getViewSeasonsUseCase }
-                    factory { createSeasonUseCase }
-                    factory { deleteSeasonUseCase }
-                }
-            )
-        }
-    }
-
-    @After
-    fun stopKoinAfterTest() = stopKoin()
 
     @Test
     fun shouldUpdateSeasonsList() = runBlocking {

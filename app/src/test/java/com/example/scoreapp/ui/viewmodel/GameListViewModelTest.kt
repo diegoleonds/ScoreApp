@@ -8,13 +8,13 @@ import com.example.scoreapp.domain.usecase.GetGamesBySeasonUseCase
 import com.example.scoreapp.ui.model.Season
 import io.mockk.*
 import junit.framework.TestCase.assertEquals
+import junit.framework.TestCase.assertNull
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
 class GameListViewModelTest {
-
     @Suppress("unused")
     @get:Rule
     val instantTaskExecutorRule: InstantTaskExecutorRule = InstantTaskExecutorRule()
@@ -27,31 +27,26 @@ class GameListViewModelTest {
         getGamesUseCase = getGamesUseCase,
         deleteGameUseCase = deleteGameUseCase
     )
-
     val season = Season(
         id = 1,
         maxRecord = 10,
         minRecord = 6
     )
-
     val gameWithLessPoints = Game(
         id = 1,
         fkSeason = season.id,
         points = 2
     )
-
     val game = Game(
         id = 2,
         fkSeason = season.id,
         points = 6
     )
-
     val gameWithMaxPoints = Game(
         id = 3,
         fkSeason = season.id,
         points = 8
     )
-
     val expectedGames = ArrayList<Game>(
         listOf(
             gameWithLessPoints,
@@ -151,5 +146,20 @@ class GameListViewModelTest {
         val viewModelSeason = viewModel.season.value
         assertEquals(expectedMaxPoints, viewModelSeason?.maxRecord)
         assertEquals(expectedMinPoints, viewModelSeason?.minRecord)
+    }
+
+    @Test
+    fun shouldPutMaxAndMinPointsOfSeasonAsZeroWhenGameSizeIsZero(){
+        viewModel.games.value = ArrayList<Game>()
+        viewModel.updateGamesOfCurrentSeason()
+        assertEquals(0, viewModel.season.value?.minRecord)
+        assertEquals(0, viewModel.season.value?.maxRecord)
+    }
+
+    @Test
+    fun shouldReturnMaxAndMinGamePositionsAsNullWhenGamesSizeIsLessThanTwo(){
+        viewModel.games.value = ArrayList<Game>()
+        assertNull(null, viewModel.getPositionOfGameWithMaxRecord())
+        assertNull(null, viewModel.getPositionOfGameWithMinRecord())
     }
 }
