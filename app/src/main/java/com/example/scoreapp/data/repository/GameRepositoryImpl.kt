@@ -3,12 +3,10 @@ package com.example.scoreapp.data.repository
 import com.example.scoreapp.data.database.GameDAO
 import com.example.scoreapp.data.model.Game
 import com.example.scoreapp.domain.repository.GameRepository
-import org.koin.core.KoinComponent
-import org.koin.core.inject
 
-class GameRepositoryImpl () : GameRepository, KoinComponent {
-    val dao: GameDAO by inject()
-
+class GameRepositoryImpl(
+    val dao: GameDAO
+) : GameRepository {
     override suspend fun getGamesBySeason(fkSeason: Long): List<Game> = dao.getAllBySeason(fkSeason)
 
     override suspend fun getById(id: Long): Game = dao.getById(id)
@@ -19,9 +17,9 @@ class GameRepositoryImpl () : GameRepository, KoinComponent {
 
     override suspend fun updateGame(game: Game) = dao.update(game)
 
-    override suspend fun getSeasonGameWithMorePoints(fkSeason: Long): Game =
+    override suspend fun getSeasonGameWithMorePoints(fkSeason: Long): Game? =
         dao.getSeasonGameWithMorePoints(fkSeason)
 
-    override suspend fun getSeasonGameWithLessPoints(fkSeason: Long): Game =
+    override suspend fun getSeasonGameWithLessPoints(fkSeason: Long): Game? =
         dao.getSeasonGameWithLessPoints(fkSeason)
 }

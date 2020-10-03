@@ -20,7 +20,7 @@ val daoModule = module {
 }
 
 val repositoryModule = module {
-    factory { SeasonRepositoryImpl() }
-    factory { GameRepositoryImpl() }
+    factory { SeasonRepositoryImpl(get()) }
+    factory { GameRepositoryImpl(get()) }
 }
 
