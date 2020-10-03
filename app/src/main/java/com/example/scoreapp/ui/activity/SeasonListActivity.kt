@@ -122,6 +122,7 @@ class SeasonListActivity : AppCompatActivity(), AdapterClick<Season> {
             }
             .setPositiveButton(resources.getString(R.string.accept)) { dialog, which ->
                 deleteSeason(season)
+
             }
             .show()
         return true
