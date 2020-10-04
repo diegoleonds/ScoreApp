@@ -14,7 +14,7 @@
 
     <include
         android:id="@+id/includeRecordInfo"
-        layout="@layout/cardview_record_info"
+        layout="@layout/cardview_season_info"
         android:layout_width="@dimen/cardview_record_width"
         android:layout_height="@dimen/cardview_record_height"
         android:layout_marginTop="27dp"

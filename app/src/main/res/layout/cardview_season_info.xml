@@ -19,7 +19,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Season:" />
+            tools:text="@string/season" />
 
         <ImageView
             android:id="@+id/woodTrophyImgView"
@@ -32,9 +32,10 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/seasonMinScoreText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/record_min"
+            android:text="@string/score_min"
             app:layout_constraintEnd_toEndOf="@+id/woodTrophyImgView"
             app:layout_constraintStart_toStartOf="@+id/woodTrophyImgView"
             app:layout_constraintTop_toBottomOf="@+id/woodTrophyImgView"
@@ -66,10 +67,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/seasonMaxScoreText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:text="@string/record_max"
+            android:text="@string/score_max"
             android:textAppearance="@style/recordCardViewAppearance"
             app:layout_constraintEnd_toEndOf="@+id/goldTrophyImgView"
             app:layout_constraintStart_toStartOf="@+id/goldTrophyImgView"

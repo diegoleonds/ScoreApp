@@ -12,7 +12,7 @@ import com.example.scoreapp.ui.model.Season
 import com.example.scoreapp.ui.viewmodel.GameViewModel
 import kotlinx.android.synthetic.main.activity_game_info.*
 import kotlinx.android.synthetic.main.cardview_points.*
-import kotlinx.android.synthetic.main.cardview_record_info.*
+import kotlinx.android.synthetic.main.cardview_season_info.*
 import kotlinx.android.synthetic.main.toolbar_back_icon.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
