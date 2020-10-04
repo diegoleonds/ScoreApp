@@ -38,7 +38,7 @@ class GameAdapter(
 
     fun setTrophyIconToMaxRecordGame(position: Int, holder: GameViewHolder){
         maxGamePosition?.let {
-            if (position == it){
+            if (position == it && position > 0){
                 holder.gameTrophyImageView.setImageResource(R.drawable.ic_gold_trophy)
                 holder.gameTrophyImageView.visibility = View.VISIBLE
             }
@@ -47,7 +47,7 @@ class GameAdapter(
 
     fun setTrophyIconToMinRecordGame(position: Int, holder: GameViewHolder){
         minGamePoisition?.let {
-            if (position == it){
+            if (position == it && position > 0){
                 holder.gameTrophyImageView.setImageResource(R.drawable.ic_wood_trophy)
                 holder.gameTrophyImageView.visibility = View.VISIBLE
             }
