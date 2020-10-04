@@ -87,6 +87,7 @@ class SeasonListActivity : AppCompatActivity(), AdapterClick<Season> {
                             maxRecord = 0,
                             minRecord = 0
                         )
+                        , true
                     )
                     isClickToGameListEnable = false
                 })
@@ -94,10 +95,11 @@ class SeasonListActivity : AppCompatActivity(), AdapterClick<Season> {
         }
     }
 
-    private fun initGameListActivity(season: Season) {
+    private fun initGameListActivity(season: Season, isSeasonNew: Boolean = false) {
         if (isClickToGameListEnable) {
             val intent = Intent(this, GameListActivity::class.java)
             intent.putExtra(getString(R.string.parcelable_season), season)
+            intent.putExtra(getString(R.string.is_season_new_intent), isSeasonNew)
             startActivity(intent)
         }
     }
@@ -124,8 +126,10 @@ class SeasonListActivity : AppCompatActivity(), AdapterClick<Season> {
             }
             .setPositiveButton(resources.getString(R.string.accept)) { dialog, which ->
                 deleteSeason(season)
-                val toast = Toast.makeText(this,
-                    getString(R.string.season_deleted_toast_message), Toast.LENGTH_SHORT)
+                val toast = Toast.makeText(
+                    this,
+                    getString(R.string.season_deleted_toast_message), Toast.LENGTH_SHORT
+                )
                 toast.show()
             }
             .show()

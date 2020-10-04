@@ -43,6 +43,7 @@ class GameListActivity : AppCompatActivity(), DialogClick, AdapterClick<Game> {
 
         initViews()
         initRecyclerView()
+        showToastIfSeasonIsNew()
         setBackBtnClick()
         setFabClick()
         setSeasonChartButtonClick()
@@ -65,6 +66,12 @@ class GameListActivity : AppCompatActivity(), DialogClick, AdapterClick<Game> {
         recyclerView.adapter = adapter
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this)
+    }
+
+    private fun showToastIfSeasonIsNew(){
+        if (intent.getBooleanExtra(getString(R.string.is_season_new_intent), false)){
+            showToast(getString(R.string.season_created_toast_message))
+        }
     }
 
     private fun observeViewModelGameList() {
