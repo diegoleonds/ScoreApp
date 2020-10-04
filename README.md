@@ -28,54 +28,18 @@ After that you can run the app in an Android Emulator, [here is a guide for conf
 
 ### Running
 
-**Cloning the Repository**
+Click in this button. 
 
-```
-$ git clone https://github.com/diegoleonds/ScoreApp.git
-```
+![](run_app.png)
 
-**Installing dependencies**
+### Running Tests
 
-```
-$ yarn
-```
+No device requiered.
 
-_or_
+![](run_tests.png)
 
-```
-$ npm install
-```
+### Running Database Tests
 
-### Connecting the App with the Server
+These tests need a physcal device/emulator to run.
 
-1 - Follow the instructions on the [mindcast-server](https://github.com/steniowagner/mindcast-server) to have the server up and running on your machine.
-
-2 - With the server up and running, go to the [/.env.development](https://github.com/steniowagner/mindCast/blob/master/.env.development) file and edit the SERVER_URL value for the IP of your machine (you can have some issues with _localhost_ if you're running on an android physical device, but you can use localhost safely on iOS).
-
-It should looks like this:
-
-SERVER_URL=http://**_IP_OF_YOUR_MACHINE_**:3001/mind-cast/api/v1
-
-*or*
-
-SERVER_URL=http://localhost:3001/mind-cast/api/v1
-
-### Running
-
-With all dependencies installed and the environment properly configured, you can now run the app:
-
-Android
-
-```
-$ react-native run-android
-```
-
-iOS
-
-```
-$ react-native run-ios
-```
-
-## Built With
-
-
+![](run_db_tests.png)
