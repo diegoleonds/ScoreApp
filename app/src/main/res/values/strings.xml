@@ -19,4 +19,11 @@
     <string name="average_score_cardview_title">" Average Score:"</string>
     <string name="delete_game_title_dialog">Delete this game?</string>
     <string name="edit_game_title_dialog">Edit game</string>
+    <string name="season_deleted_toast_message">Season deleted</string>
+    <string name="game_deleted_toast_message">Game deleted</string>
+    <string name="game_created_toast_message">Game created</string>
+    <string name="game_score_edited_toast_message">Game edited</string>
+    <string name="points">points</string>
+    <string name="game">Game</string>
+    <string name="season">Season</string>
 </resources>
