@@ -77,8 +77,8 @@ class GameActivity : AppCompatActivity(), DialogClick {
     }
 
     fun setFieldsData() {
-        pointsTitleTextView.text = "Score:"
-        recordInfoTitleTextView.text = getString(R.string.record_points_cardview_title)
+
+        recordInfoTitleTextView.text = getString(R.string.season)
     }
 
     fun setFabClick() {
