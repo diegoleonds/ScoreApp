@@ -39,6 +39,7 @@ class SeasonListActivity : AppCompatActivity(), AdapterClick<Season> {
         initRecyclerView()
         setFabClick()
         setRecyclerViewData()
+        observeViewModelSeasonId()
     }
 
     override fun onResume() {
@@ -80,19 +81,22 @@ class SeasonListActivity : AppCompatActivity(), AdapterClick<Season> {
                 CoroutineScope(Dispatchers.IO).launch {
                     viewModel.createSeason()
                 }
-                viewModel.seasonId.observe(this, Observer {
-                    initGameListActivity(
-                        Season(
-                            id = it,
-                            maxRecord = 0,
-                            minRecord = 0
-                        )
-                        , true
-                    )
-                    isClickToGameListEnable = false
-                })
             }
         }
+    }
+
+    private fun observeViewModelSeasonId(){
+        viewModel.seasonId.observe(this, Observer {
+            initGameListActivity(
+                Season(
+                    id = it,
+                    maxRecord = 0,
+                    minRecord = 0
+                )
+                , true
+            )
+            isClickToGameListEnable = false
+        })
     }
 
     private fun initGameListActivity(season: Season, isSeasonNew: Boolean = false) {
