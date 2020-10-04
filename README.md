@@ -43,3 +43,13 @@ No device requiered.
 These tests need a physcal device/emulator to run.
 
 ![](run_db_tests.png)
+
+## Built With
+
+- [Room Database](https://developer.android.com/training/data-storage/room) - Store data with Room Database
+- [Koin](https://insert-koin.io/) - Dependency injection
+- [Material Design](https://material.io/develop/android/) - Material Components for Android
+- [MockK](https://mockk.io/) - Mock library for tests
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/steniowagner/mindCast/blob/master/LICENSE) file for details
