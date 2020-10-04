@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Score App</string>
+    <string name="score">Pontuação:</string>
+    <string name="score_min">Pontuação\nMínima</string>
+    <string name="score_max">Pontuação\nMáxima</string>
+    <string name="accept">sim</string>
+    <string name="decline">não</string>
+    <string name="delete_season_title_dialog">Deletar essa temporada?</string>
+    <string name="games_toolbar_title">Jogos</string>
+    <string name="parcelable_season">temporada</string>
+    <string name="add_game_title_dialog">Adicionar jogo</string>
+    <string name="add_game_dialog_hint">Pontos do jogo</string>
+    <string name="parcelable_game">jogo</string>
+    <string name="season_info_activity_title">Sobre a temporada</string>
+    <string name="record_points_cardview_title">Pontuação</string>
+    <string name="record_frequency_cardview_title">Frequência</string>
+    <string name="average_score_cardview_title">Pontuação Média:</string>
+    <string name="delete_game_title_dialog">Deletar esse jogo?</string>
+    <string name="edit_game_title_dialog">Editar jogo</string>
+    <string name="season_deleted_toast_message">Temporada deletada</string>
+    <string name="game_deleted_toast_message">Jogo deletado</string>
+    <string name="game_created_toast_message">Jogo criado</string>
+    <string name="game_score_edited_toast_message">Jogo editado</string>
+    <string name="points">pontos</string>
+    <string name="game">Jogo</string>
+    <string name="season">Temporada</string>
+    <string name="season_created_toast_message">Bem vindo à lista de jogos dessa nova temporada!</string>
+    <string name="minimum_record">Recorde\nMínimo</string>
+    <string name="maximum_record">Recorde\nMáximo</string>
+    <string name="empty_textfield_error">Campo vazio</string>
+    <string name="score_equals_error">Pontuação não foi alterada</string>
+</resources>
