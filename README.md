@@ -5,7 +5,7 @@ If you want to take a better look in the screens of the App, they are [here](htt
 
 ## About this project
 
-A Android App for register basketball seasons and games.
+An Android App for register basketball seasons and games.
 
 ## User functionalities
 
@@ -29,7 +29,7 @@ If you want to test the app in the production mode, here is the [Android apk](ht
 
 ### Prerequisites
 
-To run this project in the development mode, you'll need to have a basic environment to run a Android App, that can be found [here](https://developer.android.com/studio).
+To run this project in the development mode, you'll need to have a basic environment to run an Android App, that can be found [here](https://developer.android.com/studio).
 After that you can run the app in an Android Emulator, [here is a guide for configure it](https://developer.android.com/studio/run/emulator#install), or with a physical device with developer mode on, [here is a guide for it](https://developer.android.com/studio/debug/dev-options).
 
 ### Running
@@ -51,7 +51,8 @@ These tests need a physcal device/emulator to run.
 ![](run_db_tests.png)
 
 ## Built With
-
+- [Android SDK](https://developer.android.com/) - Create an Android App
+- [Kotlin](https://developer.android.com/kotlin) - Develop Android apps with Kotlin
 - [Room Database](https://developer.android.com/training/data-storage/room) - Store data with Room Database
 - [Koin](https://insert-koin.io/) - Dependency injection
 - [Material Design](https://material.io/develop/android/) - Material Components for Android
