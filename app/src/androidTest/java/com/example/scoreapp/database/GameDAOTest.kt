@@ -7,6 +7,7 @@ import com.example.scoreapp.data.database.AppDatabase
 import com.example.scoreapp.data.database.GameDAO
 import com.example.scoreapp.data.model.Game
 import junit.framework.TestCase.assertEquals
+import junit.framework.TestCase.assertNull
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
@@ -42,6 +43,22 @@ class GameDAOTest {
         val game = dao.getById(1)
 
         assertEquals(expectedGame, game)
+    }
+
+    @Test
+    fun insertGameAndReadAndDeleteIt() = runBlocking {
+        val expectedGame = Game(
+            1,
+            fkSeason = 0,
+            points = 12
+        )
+        dao.insert(expectedGame)
+        val game = dao.getById(1)
+
+        assertEquals(expectedGame, game)
+
+        dao.delete(game)
+        assertNull(dao.getById(1))
     }
 
     @Test
