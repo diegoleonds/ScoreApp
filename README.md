@@ -5,7 +5,7 @@ If you want to take a better look in the screens of the App, they are [here](htt
 
 ## About this project
 
-An Android App for register basketball seasons and games.
+An Android App to register basketball seasons and games.
 
 ## User functionalities
 
