@@ -1,6 +1,8 @@
 # Score App
 ![](app_prints.png)
 
+If you want to take a better look the screens of the App, they are [here](https://drive.google.com/drive/folders/1syANnQYtQeNj92TQLocv94UO1QYXljZm?usp=sharing).
+
 ## About this project
 
 A Android App for register basketball seasons and games.
@@ -14,6 +16,10 @@ A Android App for register basketball seasons and games.
 
 - Games 
     - Register, delete and edit games.
+    
+- Avaible Languages
+    - English
+    - Pt-br
 
 ## Installers
 
@@ -52,4 +58,4 @@ These tests need a physcal device/emulator to run.
 - [MockK](https://mockk.io/) - Mock library for tests
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/steniowagner/mindCast/blob/master/LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/diegoleonds/ScoreApp/blob/master/LICENSE) file for details
