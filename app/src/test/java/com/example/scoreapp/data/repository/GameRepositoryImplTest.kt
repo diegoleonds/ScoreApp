@@ -64,7 +64,7 @@ class GameRepositoryImplTest {
             fkSeason = 1,
             points = 100
         )
-        coEvery { repository.getSeasonGameWithMorePoints(1) } returns expectedGame
+        coEvery { dao.getSeasonGameWithMorePoints(1) } returns expectedGame
         assertEquals(expectedGame, repository.getSeasonGameWithMorePoints(1))
     }
 
@@ -75,7 +75,7 @@ class GameRepositoryImplTest {
             fkSeason = 1,
             points = 0
         )
-        coEvery { repository.getSeasonGameWithLessPoints(1) } returns expectedGame
+        coEvery { dao.getSeasonGameWithLessPoints(1) } returns expectedGame
         assertEquals(expectedGame, repository.getSeasonGameWithLessPoints(1))
     }
 }

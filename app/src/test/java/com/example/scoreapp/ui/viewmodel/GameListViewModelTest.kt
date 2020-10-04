@@ -61,7 +61,7 @@ class GameListViewModelTest {
     }
 
     @Test
-    fun shouldUpdateListWithNewGames() = runBlocking {
+    fun shouldUpdateGamesList() = runBlocking {
         coEvery { getGamesUseCase.getGamesBySeason(season.id) } returns expectedGames
         viewModel.updateGamesList()
         assertEquals(expectedGames, viewModel.games.value)
@@ -142,7 +142,7 @@ class GameListViewModelTest {
             )
         )
         viewModel.games.value = expectedGames
-        viewModel.updateGamesOfCurrentSeason()
+        viewModel.setMinAndMaxSeasonScoreGames()
         val viewModelSeason = viewModel.season.value
         assertEquals(expectedMaxPoints, viewModelSeason?.maxScore)
         assertEquals(expectedMinPoints, viewModelSeason?.minScore)
@@ -151,7 +151,7 @@ class GameListViewModelTest {
     @Test
     fun shouldPutMaxAndMinPointsOfSeasonAsZeroWhenGameSizeIsZero(){
         viewModel.games.value = ArrayList<Game>()
-        viewModel.updateGamesOfCurrentSeason()
+        viewModel.setMinAndMaxSeasonScoreGames()
         assertEquals(0, viewModel.season.value?.minScore)
         assertEquals(0, viewModel.season.value?.maxScore)
     }

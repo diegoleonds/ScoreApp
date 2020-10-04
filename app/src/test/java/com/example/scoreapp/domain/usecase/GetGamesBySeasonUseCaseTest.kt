@@ -26,7 +26,7 @@ class GetGamesBySeasonUseCaseTest {
                 )
             )
         }
-        coEvery { useCase.getGamesBySeason(season.id) } returns expectedGames
+        coEvery { repository.getGamesBySeason(season.id) } returns expectedGames
         assertEquals(expectedGames, useCase.getGamesBySeason(season.id))
     }
 }
