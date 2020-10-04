@@ -17,7 +17,7 @@ A Android App for register basketball seasons and games.
 
 ## Installers
 
-If you want to test the app in the production mode, here is the [Android .apk installer](https://drive.google.com/file/d/1LKgdu1WDPo8eU2NVjoB92TPi4my8QP4D/view?usp=sharing).
+If you want to test the app in the production mode, here is the [Android apk](https://drive.google.com/file/d/1egSMERLWVTsHyOoqRIfRJjJco1ZpAK21/view?usp=sharing).
 
 ## Getting Started
 
