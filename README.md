@@ -1,7 +1,7 @@
 # Score App
 ![](app_prints.png)
 
-If you want to take a better look the screens of the App, they are [here](https://drive.google.com/drive/folders/1syANnQYtQeNj92TQLocv94UO1QYXljZm?usp=sharing).
+If you want to take a better look in the screens of the App, they are [here](https://drive.google.com/drive/folders/1syANnQYtQeNj92TQLocv94UO1QYXljZm?usp=sharing).
 
 ## About this project
 
