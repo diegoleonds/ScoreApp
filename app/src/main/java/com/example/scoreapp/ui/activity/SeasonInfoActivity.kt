@@ -56,7 +56,7 @@ class SeasonInfoActivity() : AppCompatActivity() {
             getString(R.string.record_points_cardview_title)
 
         includeSeasonPoints.seasonRecordPointsTextView.text =
-            "${season.minRecord} - ${season.maxRecord}"
+            "${season.minScore} - ${season.maxScore}"
 
         includeSeasonFrequency.recordInfoTitleTextView.text =
             getString(R.string.record_frequency_cardview_title)

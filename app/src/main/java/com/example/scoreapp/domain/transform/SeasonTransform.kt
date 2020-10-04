@@ -9,8 +9,8 @@ class SeasonTransform {
     fun transformModelSeasonIntoViewSeason(modelSeason: ModelSeason, maxGame: Game?, minGame: Game?): ViewSeason {
         return ViewSeason(
             id = modelSeason.id,
-            maxRecord = maxGame?.points ?: 0,
-            minRecord = minGame?.points ?: 0
+            maxScore = maxGame?.points ?: 0,
+            minScore = minGame?.points ?: 0
         )
     }
 

@@ -72,8 +72,8 @@ class GameActivity : AppCompatActivity(), DialogClick {
     }
 
     fun updateSeasonFieldsData(season: Season) {
-        seasonRecordPointsTextView.text = season.minRecord.toString() +
-                " - " + season.maxRecord.toString()
+        seasonRecordPointsTextView.text = season.minScore.toString() +
+                " - " + season.maxScore.toString()
     }
 
     fun setFieldsData() {

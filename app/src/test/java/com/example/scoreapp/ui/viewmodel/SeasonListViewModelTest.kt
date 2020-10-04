@@ -7,14 +7,9 @@ import com.example.scoreapp.domain.usecase.GetViewSeasonsUseCase
 import com.example.scoreapp.ui.model.Season
 import io.mockk.*
 import kotlinx.coroutines.runBlocking
-import org.junit.After
 import org.junit.Assert.assertEquals
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.koin.core.context.startKoin
-import org.koin.core.context.stopKoin
-import org.koin.dsl.module
 
 
 class SeasonListViewModelTest {
@@ -34,8 +29,8 @@ class SeasonListViewModelTest {
     @Test
     fun shouldUpdateSeasonsList() = runBlocking {
         val expectedSeasons = listOf<Season>(
-            Season(id = 1, maxRecord = 1, minRecord = 1),
-            Season(id = 2, maxRecord = 2, minRecord = 2)
+            Season(id = 1, maxScore = 1, minScore = 1),
+            Season(id = 2, maxScore = 2, minScore = 2)
         )
         coEvery { getViewSeasonsUseCase.getViewSeasons() } returns expectedSeasons
         assertEquals(null, viewModel.seasonsList.value)
@@ -54,7 +49,7 @@ class SeasonListViewModelTest {
 
     @Test
     fun shouldDeleteSeason() = runBlocking {
-        val season = Season(id = 1, maxRecord = 1, minRecord = 1)
+        val season = Season(id = 1, maxScore = 1, minScore = 1)
         coEvery { deleteSeasonUseCase.deleteSeason(season) } just runs
         deleteSeasonUseCase.deleteSeason(season)
         coVerify (exactly = 1){ deleteSeasonUseCase.deleteSeason(season) }

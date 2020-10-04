@@ -21,8 +21,8 @@ class SeasonAdapter(
 
     override fun onBindViewHolder(holder: SeasonViewHolder, position: Int) {
         val season = seasons.get(position)
-        holder.maxRecordTextView.text = season.maxRecord.toString()
-        holder.minRecordTextView.text = season.minRecord.toString()
+        holder.maxRecordTextView.text = season.maxScore.toString()
+        holder.minRecordTextView.text = season.minScore.toString()
         holder.seasonNumberTextView.text =
             holder.itemView.context.getString(R.string.season) + " " + season.id.toString()
 
@@ -33,8 +33,8 @@ class SeasonAdapter(
     override fun getItemCount(): Int = if (this::seasons.isInitialized) seasons.size else 0
 
     class SeasonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val maxRecordTextView = itemView.seasonMaximumRecordTextView
-        val minRecordTextView = itemView.seasonMinimumRecordTextView
+        val maxRecordTextView = itemView.seasonMaximumScoreTextView
+        val minRecordTextView = itemView.seasonMinimumScoreTextView
         val seasonNumberTextView = itemView.seasonNumberTextView
         val cardview = itemView.seasonCardView
     }

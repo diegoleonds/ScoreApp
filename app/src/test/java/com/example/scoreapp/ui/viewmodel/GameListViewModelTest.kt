@@ -29,8 +29,8 @@ class GameListViewModelTest {
     )
     val season = Season(
         id = 1,
-        maxRecord = 10,
-        minRecord = 6
+        maxScore = 10,
+        minScore = 6
     )
     val gameWithLessPoints = Game(
         id = 1,
@@ -144,16 +144,16 @@ class GameListViewModelTest {
         viewModel.games.value = expectedGames
         viewModel.updateGamesOfCurrentSeason()
         val viewModelSeason = viewModel.season.value
-        assertEquals(expectedMaxPoints, viewModelSeason?.maxRecord)
-        assertEquals(expectedMinPoints, viewModelSeason?.minRecord)
+        assertEquals(expectedMaxPoints, viewModelSeason?.maxScore)
+        assertEquals(expectedMinPoints, viewModelSeason?.minScore)
     }
 
     @Test
     fun shouldPutMaxAndMinPointsOfSeasonAsZeroWhenGameSizeIsZero(){
         viewModel.games.value = ArrayList<Game>()
         viewModel.updateGamesOfCurrentSeason()
-        assertEquals(0, viewModel.season.value?.minRecord)
-        assertEquals(0, viewModel.season.value?.maxRecord)
+        assertEquals(0, viewModel.season.value?.minScore)
+        assertEquals(0, viewModel.season.value?.maxScore)
     }
 
     @Test

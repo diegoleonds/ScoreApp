@@ -25,8 +25,8 @@ class SeasonTransformTest {
         )
         val expected = ViewSeason(
             id = 1,
-            maxRecord = maxGame.points,
-            minRecord = minGame.points
+            maxScore = maxGame.points,
+            minScore = minGame.points
         )
 
         val viewSeason = transform.transformModelSeasonIntoViewSeason(modelSeason, maxGame, minGame)
@@ -37,8 +37,8 @@ class SeasonTransformTest {
     fun shouldTransformViewSeasonIntoModelSeason(){
         val viewSeason = ViewSeason(
             id = 1,
-            maxRecord = 10,
-            minRecord = 2
+            maxScore = 10,
+            minScore = 2
         )
         val expectedModelSeason = ModelSeason(
             id = 1

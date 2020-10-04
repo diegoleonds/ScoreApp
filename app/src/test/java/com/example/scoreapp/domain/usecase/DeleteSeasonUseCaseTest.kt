@@ -14,8 +14,8 @@ class DeleteSeasonUseCaseTest {
     fun deleteTest() = runBlocking {
         val season = Season(
             id = 1,
-            maxRecord = 10,
-            minRecord = 2
+            maxScore = 10,
+            minScore = 2
         )
 
         coEvery { repository.deleteSeason(any()) } just runs

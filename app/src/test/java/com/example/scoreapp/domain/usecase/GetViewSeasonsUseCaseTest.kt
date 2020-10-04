@@ -55,13 +55,13 @@ class GetViewSeasonsUseCaseTest {
 
         val expectedViewSeasonOne = ViewSeason(
             id = 1,
-            maxRecord = seasonOneMaxGame.points,
-            minRecord = seasonOneMinGame.points
+            maxScore = seasonOneMaxGame.points,
+            minScore = seasonOneMinGame.points
         )
         val expectedViewSeasonTwo = ViewSeason(
             id = 2,
-            maxRecord = seasonTwoMaxGame.points,
-            minRecord = seasonTwoMinGame.points
+            maxScore = seasonTwoMaxGame.points,
+            minScore = seasonTwoMinGame.points
         )
         val expectedViewSeasons = listOf(expectedViewSeasonOne, expectedViewSeasonTwo)
 

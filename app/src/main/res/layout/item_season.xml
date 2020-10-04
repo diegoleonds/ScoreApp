@@ -41,7 +41,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/seasonNumberTextView" />
 
             <TextView
-                android:id="@+id/seasonMaximumRecordTextView"
+                android:id="@+id/seasonMaximumScoreTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
@@ -61,7 +61,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/seasonGoldTrophyImgView" />
 
             <TextView
-                android:id="@+id/seasonMinimumRecordTextView"
+                android:id="@+id/seasonMinimumScoreTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"

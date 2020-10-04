@@ -17,8 +17,8 @@ class GetUpdatedViewSeasonTest {
     fun shouldReturnUpdatedViewSeason() = runBlocking {
         val season = Season(
             id = 1,
-            maxRecord = 10,
-            minRecord = 2
+            maxScore = 10,
+            minScore = 2
         )
         val updatedGameWithMorePoints = Game(
             id = 1,
@@ -38,8 +38,8 @@ class GetUpdatedViewSeasonTest {
 
         val expectedSeason = Season(
             id = season.id,
-            maxRecord = updatedGameWithMorePoints.points,
-            minRecord = updatedGameWithLessPoints.points
+            maxScore = updatedGameWithMorePoints.points,
+            minScore = updatedGameWithLessPoints.points
         )
         assertEquals(expectedSeason, useCase.getUpdatedSeason(season.id))
     }
@@ -48,8 +48,8 @@ class GetUpdatedViewSeasonTest {
     fun shouldReturnMaxAndMinScoreAsZeroWhenSeasonGamesAreNull() = runBlocking {
         val expectedSeason = Season(
             id = 1,
-            maxRecord = 0,
-            minRecord = 0
+            maxScore = 0,
+            minScore = 0
         )
         coEvery { repository.getSeasonGameWithMorePoints(expectedSeason.id) } returns
                 null

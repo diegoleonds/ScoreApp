@@ -14,7 +14,6 @@ import com.example.scoreapp.ui.model.Season
 import com.example.scoreapp.ui.viewmodel.SeasonListViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_season_list.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -90,8 +89,8 @@ class SeasonListActivity : AppCompatActivity(), AdapterClick<Season> {
             initGameListActivity(
                 Season(
                     id = it,
-                    maxRecord = 0,
-                    minRecord = 0
+                    maxScore = 0,
+                    minScore = 0
                 )
                 , true
             )

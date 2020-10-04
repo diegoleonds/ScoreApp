@@ -30,12 +30,12 @@ class GameViewModelTest {
     fun shouldUpdateSeasonValue() = runBlocking {
         val actualSeason = Season(
             id = 1,
-            maxRecord = 10,
-            minRecord = 2
+            maxScore = 10,
+            minScore = 2
         )
         val expectedSeason = actualSeason.copy(
-            maxRecord = 11,
-            minRecord = 3
+            maxScore = 11,
+            minScore = 3
         )
         coEvery { getUpdatedViewSeason.getUpdatedSeason(actualSeason.id) } returns
              expectedSeason

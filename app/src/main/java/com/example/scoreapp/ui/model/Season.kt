@@ -4,8 +4,8 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class Season(val id: Long,
-                  var maxRecord: Int,
-                  var minRecord: Int) : Parcelable{
+                  var maxScore: Int,
+                  var minScore: Int) : Parcelable{
     constructor(parcel: Parcel) : this(
     parcel.readLong(),
     parcel.readInt(),
@@ -15,8 +15,8 @@ data class Season(val id: Long,
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeLong(id)
-        parcel.writeInt(maxRecord)
-        parcel.writeInt(minRecord)
+        parcel.writeInt(maxScore)
+        parcel.writeInt(minScore)
     }
 
     override fun describeContents(): Int {

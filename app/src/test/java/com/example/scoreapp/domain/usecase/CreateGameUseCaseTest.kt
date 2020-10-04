@@ -10,8 +10,8 @@ class CreateGameUseCaseTest {
     val repository = mockk<GameRepositoryImpl>()
     val season = Season(
         id = 1,
-        maxRecord = 10,
-        minRecord = 2
+        maxScore = 10,
+        minScore = 2
     )
 
     val useCase = CreateGameUseCase(repository)
