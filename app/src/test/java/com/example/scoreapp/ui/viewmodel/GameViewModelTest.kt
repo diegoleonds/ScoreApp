@@ -65,4 +65,21 @@ class GameViewModelTest {
         viewModel.updateGame(2)
         assertEquals(expectedGame, viewModel.game.value)
     }
+
+    @Test
+    fun shouldUpdateShowToastValue() = runBlocking {
+        val game = Game(
+            id = 1,
+            fkSeason = 1,
+            points = 2
+        )
+        viewModel.game.value = game
+        coEvery { updateGameUseCase.updateGame(any()) } just runs
+
+        viewModel.updateGame(game.points)
+        assertFalse(viewModel.showToast?.value ?: true)
+
+        viewModel.updateGame(game.points + 1)
+        assertTrue(viewModel.showToast?.value ?: false)
+    }
 }
