@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="7dp"
-                android:text="@string/seasonItemTextView"
+                android:text="@string/season"
                 android:textAppearance="@style/cardViewTitleAppearance"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

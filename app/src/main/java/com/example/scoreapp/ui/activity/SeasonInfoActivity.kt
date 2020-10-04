@@ -37,7 +37,8 @@ class SeasonInfoActivity() : AppCompatActivity() {
 
     fun observeViewModelData() {
         viewModel.games.observe(this, Observer {
-            pointsTextView.text = "${viewModel.getSeasonAverageScore().toString()} points"
+            pointsTextView.text = "${viewModel.getSeasonAverageScore().toString()} " +
+                    getString(R.string.points)
             includeSeasonFrequency.seasonRecordPointsTextView.text =
                 "${viewModel.getMinRecordFrequency()} - ${viewModel.getMaxRecordFrequency()}"
         })
