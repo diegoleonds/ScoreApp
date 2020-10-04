@@ -8,7 +8,7 @@ import com.example.scoreapp.ui.model.Season
 import com.example.scoreapp.ui.viewmodel.SeasonInfoViewModel
 import kotlinx.android.synthetic.main.activity_season_info.*
 import kotlinx.android.synthetic.main.cardview_points.*
-import kotlinx.android.synthetic.main.cardview_record_info.view.*
+import kotlinx.android.synthetic.main.cardview_season_info.view.*
 import kotlinx.android.synthetic.main.toolbar_back_icon.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -59,6 +59,9 @@ class SeasonInfoActivity() : AppCompatActivity() {
 
         includeSeasonFrequency.recordInfoTitleTextView.text =
             getString(R.string.record_frequency_cardview_title)
+
+        includeSeasonFrequency.seasonMinScoreText.text = getString(R.string.minimum_record)
+        includeSeasonFrequency.seasonMaxScoreText.text = getString(R.string.maximum_record)
 
         pointsTitleTextView.text = getString(R.string.average_score_cardview_title)
     }

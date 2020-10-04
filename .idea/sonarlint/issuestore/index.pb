@@ -103,7 +103,5 @@ z
 Japp/src/main/java/com/example/scoreapp/domain/usecase/UpdateGameUseCase.kt,0\1\01b83f03ed31949f840a7648ac02af39e5aa0658
 }
 Mapp/src/main/java/com/example/scoreapp/domain/usecase/GetUpdatedViewSeason.kt,9\e\9e92b502779652d77fa0bd83cd6033f4d86f0110
-S
-#app/src/main/res/values/strings.xml,d\2\d2281fbb3027de2722081a53408dd77628bf080e
 t
 Dapp/src/main/java/com/example/scoreapp/ui/viewmodel/GameViewModel.kt,e\d\ed3b3a07b4fbc350e7d2d8598bf1c9f3ec256a29

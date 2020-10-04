@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Score App</string>
     <string name="score">Score:</string>
-    <string name="record_min">Minimum\nRecord</string>
-    <string name="record_max">Maximum\nRecord</string>
+    <string name="score_min">Minimum\nScore</string>
+    <string name="score_max">Maximum\nScore</string>
     <string name="game_item_text_view">Game</string>
     <string name="seasonItemTextView">Season</string>
     <string name="accept">yes</string>
@@ -28,4 +28,6 @@
     <string name="season">Season</string>
     <string name="is_season_new_intent">isNew</string>
     <string name="season_created_toast_message">Welcome to your new season game list</string>
+    <string name="minimum_record">Minimum\nRecord</string>
+    <string name="maximum_record">Maximum\nRecord</string>
 </resources>
