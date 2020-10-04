@@ -1,10 +1,8 @@
 <resources>
     <string name="app_name">Score App</string>
-    <string name="score">Score:</string>
+    <string name="score" translatable="false">Score:</string>
     <string name="score_min">Minimum\nScore</string>
     <string name="score_max">Maximum\nScore</string>
-    <string name="game_item_text_view">Game</string>
-    <string name="seasonItemTextView">Season</string>
     <string name="accept">yes</string>
     <string name="decline">no</string>
     <string name="delete_season_title_dialog">Delete this season?</string>
@@ -14,8 +12,8 @@
     <string name="add_game_dialog_hint">Game points</string>
     <string name="parcelable_game">game</string>
     <string name="season_info_activity_title">Season info</string>
-    <string name="record_points_cardview_title">Season</string>
-    <string name="record_frequency_cardview_title">Frequency</string>
+    <string name="record_points_cardview_title">Score</string>
+    <string name="record_frequency_cardview_title">Record Frequency</string>
     <string name="average_score_cardview_title">" Average Score:"</string>
     <string name="delete_game_title_dialog">Delete this game?</string>
     <string name="edit_game_title_dialog">Edit game</string>
@@ -26,7 +24,7 @@
     <string name="points">points</string>
     <string name="game">Game</string>
     <string name="season">Season</string>
-    <string name="is_season_new_intent">isNew</string>
+    <string name="is_season_new_intent" translatable="false">isNew</string>
     <string name="season_created_toast_message">Welcome to your new season game list</string>
     <string name="minimum_record">Minimum\nRecord</string>
     <string name="maximum_record">Maximum\nRecord</string>

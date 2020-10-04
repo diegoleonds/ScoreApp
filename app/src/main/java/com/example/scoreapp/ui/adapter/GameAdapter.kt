@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.scoreapp.R
 import com.example.scoreapp.data.model.Game
-import com.example.scoreapp.ui.model.Season
 import kotlinx.android.synthetic.main.item_game.view.*
 
 class GameAdapter(
@@ -27,7 +26,7 @@ class GameAdapter(
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
         val game = games.get(position)
         holder.gameNumberTextView.text =
-            holder.itemView.context.getString(R.string.game_item_text_view) + " " + game.id
+            holder.itemView.context.getString(R.string.game) + " " + game.id
         holder.gamePointsTextView.text = game.points.toString()
         holder.gameTrophyImageView.visibility = View.GONE
 

@@ -24,7 +24,7 @@ class SeasonAdapter(
         holder.maxRecordTextView.text = season.maxRecord.toString()
         holder.minRecordTextView.text = season.minRecord.toString()
         holder.seasonNumberTextView.text =
-            holder.itemView.context.getString(R.string.seasonItemTextView) + " " + season.id.toString()
+            holder.itemView.context.getString(R.string.season) + " " + season.id.toString()
 
         holder.cardview.setOnClickListener { click.simpleClick(season) }
         holder.cardview.setOnLongClickListener { click.longClick(season) }
