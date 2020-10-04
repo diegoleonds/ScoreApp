@@ -12,7 +12,7 @@ import com.example.scoreapp.R
 import com.example.scoreapp.data.model.Game
 import com.example.scoreapp.ui.adapter.AdapterClick
 import com.example.scoreapp.ui.adapter.GameAdapter
-import com.example.scoreapp.ui.dialog.DialogClick
+import com.example.scoreapp.ui.dialog.DialogEvents
 import com.example.scoreapp.ui.dialog.GameDialog
 import com.example.scoreapp.ui.model.Season
 import com.example.scoreapp.ui.viewmodel.GameListViewModel
@@ -24,14 +24,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class GameListActivity : AppCompatActivity(), DialogClick, AdapterClick<Game> {
+class GameListActivity : AppCompatActivity(), DialogEvents, AdapterClick<Game> {
 
     private val viewModel: GameListViewModel by viewModel()
     private lateinit var backBtn: ImageButton
     private lateinit var addGameFab: FloatingActionButton
     private lateinit var recyclerView: RecyclerView
+    lateinit var dialog: GameDialog
     private val adapter = GameAdapter(this)
     private var clickAnotherActivityEnable = true
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +47,7 @@ class GameListActivity : AppCompatActivity(), DialogClick, AdapterClick<Game> {
         initRecyclerView()
         showToastIfSeasonIsNew()
         setBackBtnClick()
+        initDialog()
         setFabClick()
         setSeasonChartButtonClick()
         observeViewModelGameList()
@@ -68,8 +71,8 @@ class GameListActivity : AppCompatActivity(), DialogClick, AdapterClick<Game> {
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
-    private fun showToastIfSeasonIsNew(){
-        if (intent.getBooleanExtra(getString(R.string.is_season_new_intent), false)){
+    private fun showToastIfSeasonIsNew() {
+        if (intent.getBooleanExtra(getString(R.string.is_season_new_intent), false)) {
             showToast(getString(R.string.season_created_toast_message))
         }
     }
@@ -122,21 +125,34 @@ class GameListActivity : AppCompatActivity(), DialogClick, AdapterClick<Game> {
         }
     }
 
+    private fun initDialog() {
+        dialog = GameDialog(
+            getString(R.string.add_game_title_dialog),
+            this
+        )
+    }
+
     private fun setFabClick() {
         addGameFab.setOnClickListener {
-            val dialog = GameDialog(getString(R.string.add_game_title_dialog), this)
             dialog.show(supportFragmentManager, "")
         }
     }
 
     override fun positiveClick(insertedText: String) {
-        CoroutineScope(Dispatchers.IO).launch {
-            viewModel.addGame(insertedText.toInt())
+        if (insertedText.isNullOrEmpty()) {
+            dialog.setError(getString(R.string.empty_textfield_error))
+        } else {
+            CoroutineScope(Dispatchers.IO).launch {
+                viewModel.addGame(insertedText.toInt())
+            }
+            showToast(getString(R.string.game_created_toast_message))
+            dialog.dismiss()
         }
-        showToast(getString(R.string.game_created_toast_message))
     }
 
-    override fun negativeClick() {}
+    override fun negativeClick() {
+        dialog.dismiss()
+    }
 
     override fun simpleClick(game: Game) {
         if (clickAnotherActivityEnable) {

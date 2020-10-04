@@ -87,8 +87,6 @@ x
 Happ/src/main/java/com/example/scoreapp/ui/activity/SeasonInfoActivity.kt,a\3\a3f429ff763210d22151f01e7379a0e001dd20ed
 U
 %app/src/main/res/layout/item_game.xml,7\7\77b70c3793a10be498741fb3aa4d954f67f04e59
-W
-'app/src/main/res/layout/item_season.xml,3\3\3349479ab6809bbfa67bb20a6481b05db85cc45f
 z
 Japp/src/main/java/com/example/scoreapp/domain/usecase/DeleteGameUseCase.kt,1\c\1c0835b873dc10190857f4a8f702ea3719d4e44c
 |

@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.scoreapp.R
 import com.example.scoreapp.data.model.Game
-import com.example.scoreapp.ui.dialog.DialogClick
+import com.example.scoreapp.ui.dialog.DialogEvents
 import com.example.scoreapp.ui.dialog.GameDialog
 import com.example.scoreapp.ui.model.Season
 import com.example.scoreapp.ui.viewmodel.GameViewModel
@@ -19,9 +19,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class GameActivity : AppCompatActivity(), DialogClick {
+class GameActivity : AppCompatActivity(), DialogEvents {
     val viewModel: GameViewModel by viewModel()
-
+    lateinit var dialog: GameDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_info)
@@ -31,6 +31,7 @@ class GameActivity : AppCompatActivity(), DialogClick {
         observeViewModelSeason()
         observeViewModelToast()
         setFieldsData()
+        initDialog()
         backToolbarButton.setOnClickListener { finish() }
         setFabClick()
     }
@@ -44,6 +45,7 @@ class GameActivity : AppCompatActivity(), DialogClick {
     fun observeViewModelGame() {
         viewModel.game.observe(this, Observer {
             updateGameFieldsData(it)
+            dialog.actualText = it.points.toString()
         })
     }
 
@@ -81,26 +83,36 @@ class GameActivity : AppCompatActivity(), DialogClick {
         recordInfoTitleTextView.text = getString(R.string.season)
     }
 
+    fun initDialog() {
+        dialog = GameDialog(
+            title = getString(R.string.edit_game_title_dialog),
+            events = this,
+            actualText = viewModel.game.value?.points.toString() ?: "0"
+        )
+    }
+
     fun setFabClick() {
         fabEditGame.setOnClickListener {
-            val dialog = GameDialog(
-                title = getString(R.string.edit_game_title_dialog),
-                click = this,
-                actualText = viewModel.game.value?.points.toString() ?: "0"
-            )
             dialog.show(supportFragmentManager, "")
         }
     }
 
     override fun positiveClick(insertedText: String) {
-        CoroutineScope(Dispatchers.IO).launch {
-            viewModel.updateGame(
-                updatedPoints = insertedText.toInt()
-            )
+        if (insertedText.isNullOrEmpty()) {
+            dialog.setError(getString(R.string.empty_textfield_error))
+        } else if (insertedText.toInt() == viewModel.game.value?.points) {
+            dialog.setError(getString(R.string.score_equals_error))
+        } else {
+            CoroutineScope(Dispatchers.IO).launch {
+                viewModel.updateGame(
+                    updatedPoints = insertedText.toInt()
+                )
+            }
+            dialog.dismiss()
         }
     }
 
     override fun negativeClick() {
-
+        dialog.dismiss()
     }
 }

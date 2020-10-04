@@ -28,4 +28,6 @@
     <string name="season_created_toast_message">Welcome to your new season game list</string>
     <string name="minimum_record">Minimum\nRecord</string>
     <string name="maximum_record">Maximum\nRecord</string>
+    <string name="empty_textfield_error">Empty field</string>
+    <string name="score_equals_error">Game score not changed</string>
 </resources>

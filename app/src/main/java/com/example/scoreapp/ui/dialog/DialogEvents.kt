@@ -1,6 +1,6 @@
 package com.example.scoreapp.ui.dialog
 
-interface DialogClick {
+interface DialogEvents {
     fun positiveClick(insertedText: String)
     fun negativeClick()
 }
