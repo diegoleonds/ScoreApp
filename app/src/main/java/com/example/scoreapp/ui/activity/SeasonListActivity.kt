@@ -2,6 +2,7 @@ package com.example.scoreapp.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +14,7 @@ import com.example.scoreapp.ui.model.Season
 import com.example.scoreapp.ui.viewmodel.SeasonListViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_season_list.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -122,7 +124,9 @@ class SeasonListActivity : AppCompatActivity(), AdapterClick<Season> {
             }
             .setPositiveButton(resources.getString(R.string.accept)) { dialog, which ->
                 deleteSeason(season)
-
+                val toast = Toast.makeText(this,
+                    getString(R.string.season_deleted_toast_message), Toast.LENGTH_SHORT)
+                toast.show()
             }
             .show()
         return true

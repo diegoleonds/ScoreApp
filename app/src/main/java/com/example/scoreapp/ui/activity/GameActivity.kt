@@ -1,6 +1,7 @@
 package com.example.scoreapp.ui.activity
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.scoreapp.R
@@ -28,6 +29,7 @@ class GameActivity : AppCompatActivity(), DialogClick {
         getIntentExtras()
         observeViewModelGame()
         observeViewModelSeason()
+        observeViewModelToast()
         setFieldsData()
         backToolbarButton.setOnClickListener { finish() }
         setFabClick()
@@ -51,9 +53,22 @@ class GameActivity : AppCompatActivity(), DialogClick {
         })
     }
 
+    fun observeViewModelToast() {
+        viewModel.showToast.observe(this, Observer {
+            it?.let {
+                if (it) {
+                    Toast.makeText(
+                        this, getString(R.string.game_score_edited_toast_message),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        })
+    }
+
     fun updateGameFieldsData(game: Game) {
-        pointsTextView.text = game.points.toString() + " points"
-        backToolbarTitle.text = "Game " + game.id
+        pointsTextView.text = game.points.toString() + " ${getString(R.string.points)}"
+        backToolbarTitle.text = "${getString(R.string.game)} " + game.id
     }
 
     fun updateSeasonFieldsData(season: Season) {

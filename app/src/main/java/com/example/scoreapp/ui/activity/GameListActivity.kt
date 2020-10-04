@@ -3,6 +3,7 @@ package com.example.scoreapp.ui.activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -38,7 +39,7 @@ class GameListActivity : AppCompatActivity(), DialogClick, AdapterClick<Game> {
 
         val season = intent.getParcelableExtra<Season>(getString(R.string.parcelable_season))
         viewModel.season.value = season
-        gameListToolbarTitle.text = "Season ${season.id}"
+        gameListToolbarTitle.text = "${getString(R.string.season)} ${season.id}"
 
         initViews()
         initRecyclerView()
@@ -90,6 +91,10 @@ class GameListActivity : AppCompatActivity(), DialogClick, AdapterClick<Game> {
         }
     }
 
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
     private fun setSeasonChartButtonClick() {
         gameListChartBtn.setOnClickListener {
             if (clickAnotherActivityEnable) {
@@ -121,6 +126,7 @@ class GameListActivity : AppCompatActivity(), DialogClick, AdapterClick<Game> {
         CoroutineScope(Dispatchers.IO).launch {
             viewModel.addGame(insertedText.toInt())
         }
+        showToast(getString(R.string.game_created_toast_message))
     }
 
     override fun negativeClick() {}
@@ -144,6 +150,7 @@ class GameListActivity : AppCompatActivity(), DialogClick, AdapterClick<Game> {
                 CoroutineScope(Dispatchers.IO).launch {
                     viewModel.deleteGame(game)
                 }
+                showToast(getString(R.string.game_deleted_toast_message))
             }
             .show()
         return true
