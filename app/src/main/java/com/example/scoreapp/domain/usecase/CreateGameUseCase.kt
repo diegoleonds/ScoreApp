@@ -9,6 +9,10 @@ class CreateGameUseCase(
     val repository: GameRepositoryImpl
 ) {
     suspend fun createGame(points: Int, season: Season?) {
+        /**
+         * only create a game if the season is not null,
+         * in the let block the season is referenced as it
+         */
         season?.let {
             repository.insertGame(
                 Game(

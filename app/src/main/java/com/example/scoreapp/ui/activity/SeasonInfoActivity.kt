@@ -16,15 +16,25 @@ import kotlinx.coroutines.launch
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class SeasonInfoActivity() : AppCompatActivity() {
-
+    /**
+     * use koin to get it
+     */
     val viewModel: SeasonInfoViewModel by viewModel()
+
     lateinit var season: Season
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_season_info)
 
+        /**
+         * get value from intent
+         */
         season = intent.getParcelableExtra<Season>(getString(R.string.parcelable_season))
+
+        /**
+         * click in toolbar back arrow icon will finish this activity
+         */
         backToolbarButton.setOnClickListener { finish() }
         populateViews()
         observeViewModelData()
@@ -32,13 +42,26 @@ class SeasonInfoActivity() : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        /**
+         * update viewmodel data when the user comes to this activity
+         */
         updateViewModelData()
     }
 
+    /**
+     * observe viewmodel game list
+     */
     fun observeViewModelData() {
         viewModel.games.observe(this, Observer {
+            /**
+             * update the layout with the average score
+             */
             pointsTextView.text = "${viewModel.getSeasonAverageScore().toString()} " +
                     getString(R.string.points)
+
+            /**
+             * update the layout with minimum and maximum frequency of record breaking
+             */
             includeSeasonFrequency.seasonRecordPointsTextView.text =
                 "${viewModel.getMinRecordFrequency()} - ${viewModel.getMaxRecordFrequency()}"
         })
@@ -50,6 +73,9 @@ class SeasonInfoActivity() : AppCompatActivity() {
         }
     }
 
+    /**
+     * populate view with data from season and strings resources
+     */
     fun populateViews(){
         backToolbarTitle.text = getString(R.string.season_info_activity_title)
         includeSeasonPoints.recordInfoTitleTextView.text =

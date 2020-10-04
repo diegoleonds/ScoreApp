@@ -22,12 +22,27 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 
 class SeasonListActivity : AppCompatActivity(), AdapterClick<Season> {
+    /**
+     * use koin to get it
+     */
     private val viewModel: SeasonListViewModel by viewModel()
 
-    //View items
+    /**
+     * views from layout
+     */
     private lateinit var recyclerView: RecyclerView
     private lateinit var fab: FloatingActionButton
+
+    /**
+     * adapter for the view list,
+     * it tells how to show data
+     */
     private val adapter: SeasonAdapter = SeasonAdapter(this)
+
+    /**
+     * control variable to avoid double activity initializations,
+     * allow to start another activity when it value is true
+     */
     private var isClickToGameListEnable = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,13 +52,16 @@ class SeasonListActivity : AppCompatActivity(), AdapterClick<Season> {
         initViews()
         initRecyclerView()
         setFabClick()
-        setRecyclerViewData()
+        observeSeasonsDataChanges()
         observeViewModelSeasonId()
     }
 
     override fun onResume() {
         super.onResume()
-        setRecyclerViewData()
+        /**
+         * update the list data when the user comes to this activity
+         */
+        updateSeasonsData()
     }
 
     override fun onRestart() {
@@ -51,21 +69,27 @@ class SeasonListActivity : AppCompatActivity(), AdapterClick<Season> {
         isClickToGameListEnable = true
     }
 
+    /**
+     * get the views from layout
+     */
     private fun initViews() {
         recyclerView = seasonRecyclerView
         fab = seasonAddFab
     }
 
+    /**
+     * configure the season list
+     */
     private fun initRecyclerView() {
         recyclerView.adapter = adapter
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
-    private fun setRecyclerViewData() {
-        CoroutineScope(Dispatchers.IO).launch {
-            viewModel.updateSeasonsList()
-        }
+    /**
+     *
+     */
+    private fun observeSeasonsDataChanges() {
         viewModel.seasonsList.observe(this, Observer {
             it?.let {
                 adapter.seasons = ArrayList(it)
@@ -74,6 +98,18 @@ class SeasonListActivity : AppCompatActivity(), AdapterClick<Season> {
         })
     }
 
+    /**
+     * update season list with the latest data
+     */
+    private fun updateSeasonsData(){
+        CoroutineScope(Dispatchers.IO).launch {
+            viewModel.updateSeasonsList()
+        }
+    }
+
+    /**
+     * set an action for the floating action button
+     */
     private fun setFabClick() {
         fab.setOnClickListener {
             if (isClickToGameListEnable) {
@@ -84,8 +120,11 @@ class SeasonListActivity : AppCompatActivity(), AdapterClick<Season> {
         }
     }
 
-    private fun observeViewModelSeasonId(){
+    private fun observeViewModelSeasonId() {
         viewModel.seasonId.observe(this, Observer {
+            /**
+             * is called when a season is created
+             */
             initGameListActivity(
                 Season(
                     id = it,
@@ -98,8 +137,17 @@ class SeasonListActivity : AppCompatActivity(), AdapterClick<Season> {
         })
     }
 
+    /**
+     * @param season the ui season to pass to next activity
+     *
+     * @param isSeasonNew (optional with default value as false) will be true
+     * when a new season is created
+     */
     private fun initGameListActivity(season: Season, isSeasonNew: Boolean = false) {
         if (isClickToGameListEnable) {
+            /**
+             * this intent will be sent to next activity with the extras
+             */
             val intent = Intent(this, GameListActivity::class.java)
             intent.putExtra(getString(R.string.parcelable_season), season)
             intent.putExtra(getString(R.string.is_season_new_intent), isSeasonNew)
@@ -108,8 +156,17 @@ class SeasonListActivity : AppCompatActivity(), AdapterClick<Season> {
     }
 
     private fun deleteSeason(season: Season) {
+        /**
+         * remove the season only from the adapter array list
+         * and notify that data has been changed updating the
+         * view list
+         */
         adapter.seasons.remove(season)
         adapter.notifyDataSetChanged()
+
+        /**
+         * remove the season from the database
+         */
         CoroutineScope(Dispatchers.IO).launch {
             viewModel.deleteSeason(season)
         }
@@ -123,11 +180,18 @@ class SeasonListActivity : AppCompatActivity(), AdapterClick<Season> {
     }
 
     override fun longClick(season: Season): Boolean {
+        /**
+         * open a dialog asking for delete the season
+         */
         MaterialAlertDialogBuilder(this)
             .setTitle(resources.getString(R.string.delete_season_title_dialog))
             .setNegativeButton(resources.getString(R.string.decline)) { dialog, which ->
             }
             .setPositiveButton(resources.getString(R.string.accept)) { dialog, which ->
+                /**
+                 * delete the season and show a notification
+                 * for it
+                 */
                 deleteSeason(season)
                 val toast = Toast.makeText(
                     this,

@@ -25,22 +25,45 @@ import kotlinx.coroutines.launch
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class GameListActivity : AppCompatActivity(), DialogEvents, AdapterClick<Game> {
-
+    /**
+     * use koin to get it
+     */
     private val viewModel: GameListViewModel by viewModel()
+
+    /**
+     * views from layout
+     */
     private lateinit var backBtn: ImageButton
     private lateinit var addGameFab: FloatingActionButton
     private lateinit var recyclerView: RecyclerView
-    lateinit var dialog: GameDialog
-    private val adapter = GameAdapter(this)
-    private var clickAnotherActivityEnable = true
 
+    lateinit var addGameDialog: GameDialog
+
+    /**
+     * adapter for the view list,
+     * it tells how to show data
+     */
+    private val adapter = GameAdapter(this)
+
+    /**
+     * control variable to avoid double activity initializations,
+     * allow to start another activity when it value is true
+     */
+    private var clickAnotherActivityEnable = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_list)
 
+        /**
+         * getting the season from the intent
+         */
         val season = intent.getParcelableExtra<Season>(getString(R.string.parcelable_season))
         viewModel.season.value = season
+
+        /**
+         * set the activity title
+         */
         gameListToolbarTitle.text = "${getString(R.string.season)} ${season.id}"
 
         initViews()
@@ -55,16 +78,25 @@ class GameListActivity : AppCompatActivity(), DialogEvents, AdapterClick<Game> {
 
     override fun onResume() {
         super.onResume()
+        /**
+         * update the list data when the user comes to this activity
+         */
         updateViewModelGameList()
         clickAnotherActivityEnable = true
     }
 
+    /**
+     * get the views from layout
+     */
     private fun initViews() {
         backBtn = gameListToolbarBackButton
         addGameFab = gameAddFab
         recyclerView = gamesRecyclerView
     }
 
+    /**
+     * configure the season list
+     */
     private fun initRecyclerView() {
         recyclerView.adapter = adapter
         recyclerView.setHasFixedSize(true)
@@ -77,21 +109,35 @@ class GameListActivity : AppCompatActivity(), DialogEvents, AdapterClick<Game> {
         }
     }
 
+    /**
+     * update the view list with latest games
+     */
     private fun observeViewModelGameList() {
         viewModel.games.observe(this, Observer {
             it?.let {
                 updateRecyclerViewAdapter(it)
-                viewModel.updateGamesOfCurrentSeason()
+                viewModel.setMinAndMaxSeasonScoreGames()
             }
         })
     }
 
+    /**
+     * @param games to be show on the screen
+     */
     private fun updateRecyclerViewAdapter(games: ArrayList<Game>) {
         adapter.games = games
+        /**
+         * remove the icons trophys
+         */
         adapter.removeTrophyFromItem(adapter.maxGamePosition)
         adapter.removeTrophyFromItem(adapter.minGamePoisition)
+
+        /**
+         * send the position in the list of games that deserve a trophy
+         */
         adapter.maxGamePosition = viewModel.getPositionOfGameWithMaxRecord()
         adapter.minGamePoisition = viewModel.getPositionOfGameWithMinRecord()
+
         adapter.notifyDataSetChanged()
     }
 
@@ -101,10 +147,16 @@ class GameListActivity : AppCompatActivity(), DialogEvents, AdapterClick<Game> {
         }
     }
 
+    /**
+     * @param message to be show in the toast
+     */
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
+    /**
+     * set click in toolbar chart icon
+     */
     private fun setSeasonChartButtonClick() {
         gameListChartBtn.setOnClickListener {
             if (clickAnotherActivityEnable) {
@@ -116,46 +168,77 @@ class GameListActivity : AppCompatActivity(), DialogEvents, AdapterClick<Game> {
         }
     }
 
+    /**
+     * click in toolbar back arrow icon
+     */
     private fun setBackBtnClick() {
         backBtn.setOnClickListener {
             if (clickAnotherActivityEnable) {
                 clickAnotherActivityEnable = false
+                /**
+                 * finish this activity
+                 */
                 finish()
             }
         }
     }
 
     private fun initDialog() {
-        dialog = GameDialog(
+        addGameDialog = GameDialog(
             getString(R.string.add_game_title_dialog),
             this
         )
     }
 
+    /**
+     * set click in float action button
+     */
     private fun setFabClick() {
         addGameFab.setOnClickListener {
-            dialog.show(supportFragmentManager, "")
+            /**
+             * open add gameDialog
+             */
+            addGameDialog.show(supportFragmentManager, "")
         }
     }
 
+    /**
+     * interface for clicks in gameDialog
+     */
     override fun positiveClick(insertedText: String) {
         if (insertedText.isNullOrEmpty()) {
-            dialog.setError(getString(R.string.empty_textfield_error))
+            addGameDialog.setError(getString(R.string.empty_textfield_error))
         } else {
+            /**
+             * add a game
+             */
             CoroutineScope(Dispatchers.IO).launch {
                 viewModel.addGame(insertedText.toInt())
             }
+            /**
+             * show toast and close the dialog
+             */
             showToast(getString(R.string.game_created_toast_message))
-            dialog.dismiss()
+            addGameDialog.dismiss()
         }
     }
 
+    /**
+     * interface for clicks in gameDialog,
+     * only close the dialog
+     */
     override fun negativeClick() {
-        dialog.dismiss()
+        addGameDialog.dismiss()
     }
 
+    /**
+     * interface for clicks in a list item
+     */
     override fun simpleClick(game: Game) {
         if (clickAnotherActivityEnable) {
+            /**
+             * start game activity with extras
+             */
             val intent = Intent(this, GameActivity::class.java)
             intent.putExtra(getString(R.string.parcelable_game), game)
             intent.putExtra(getString(R.string.parcelable_season), viewModel.season.value)
@@ -164,12 +247,21 @@ class GameListActivity : AppCompatActivity(), DialogEvents, AdapterClick<Game> {
         }
     }
 
+    /**
+     * interface for pressing in a list item
+     */
     override fun longClick(game: Game): Boolean {
+        /**
+         * open a dialog asking for delete the game
+         */
         MaterialAlertDialogBuilder(this)
             .setTitle(resources.getString(R.string.delete_game_title_dialog))
             .setNegativeButton(resources.getString(R.string.decline)) { dialog, which ->
             }
             .setPositiveButton(resources.getString(R.string.accept)) { dialog, which ->
+                /**
+                 * delete the game and show a toast
+                 */
                 CoroutineScope(Dispatchers.IO).launch {
                     viewModel.deleteGame(game)
                 }

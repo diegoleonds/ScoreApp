@@ -13,6 +13,10 @@ class GetViewSeasonsUseCase(
     val seasonRepository: SeasonRepositoryImpl,
     val gameRepository: GameRepositoryImpl
 ){
+    /**
+     * @return all model seasons converted into ui seasons,
+     * with min and max score
+     */
     suspend fun getViewSeasons(): List<ViewSeason> {
         val transform = SeasonTransform()
         val modelSeasons = seasonRepository.getAll()

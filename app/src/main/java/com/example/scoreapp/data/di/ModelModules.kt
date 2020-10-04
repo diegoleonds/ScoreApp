@@ -6,6 +6,9 @@ import com.example.scoreapp.data.repository.GameRepositoryImpl
 import com.example.scoreapp.data.repository.SeasonRepositoryImpl
 import org.koin.dsl.module
 
+/**
+ * @ file for dependency injection in this package classes
+ */
 val databaseModule = module {
     single {
         Room

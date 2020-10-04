@@ -7,5 +7,8 @@ import com.example.scoreapp.domain.repository.SeasonRepository
 class CreateSeasonUseCase(
     val seasonRepository: SeasonRepositoryImpl
 ) {
+    /**
+     * create a station and return id
+     */
     suspend fun createSeason(): Long = seasonRepository.insertSeason(Season())
 }

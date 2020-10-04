@@ -20,8 +20,13 @@ import kotlinx.coroutines.launch
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class GameActivity : AppCompatActivity(), DialogEvents {
+    /**
+     * use koin to get it
+     */
     val viewModel: GameViewModel by viewModel()
-    lateinit var dialog: GameDialog
+
+    lateinit var editGameDialog: GameDialog
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_info)
@@ -36,27 +41,45 @@ class GameActivity : AppCompatActivity(), DialogEvents {
         setFabClick()
     }
 
+    /**
+     * get data from intent and set it to viewmodel observers
+     */
     fun getIntentExtras() {
         viewModel.game.value = intent.getParcelableExtra<Game>(getString(R.string.parcelable_game))
         viewModel.season.value =
             intent.getParcelableExtra<Season>(getString(R.string.parcelable_season))
     }
 
+    /**
+     * observe viewmodel game
+     */
     fun observeViewModelGame() {
         viewModel.game.observe(this, Observer {
             updateGameFieldsData(it)
-            dialog.actualText = it.points.toString()
+            /**
+             * set ediGameDialog text
+             */
+            editGameDialog.actualText = it.points.toString()
         })
     }
 
+    /**
+     * observe viewmodel season
+     */
     fun observeViewModelSeason() {
         viewModel.season.observe(this, Observer {
             updateSeasonFieldsData(it)
         })
     }
 
+    /**
+     * observe viewmodel toast boolean
+     */
     fun observeViewModelToast() {
         viewModel.showToast.observe(this, Observer {
+            /**
+             * show the toast only if the value is true
+             */
             it?.let {
                 if (it) {
                     Toast.makeText(
@@ -78,41 +101,58 @@ class GameActivity : AppCompatActivity(), DialogEvents {
                 " - " + season.maxScore.toString()
     }
 
+    /**
+     * set cardview title in layout
+     */
     fun setFieldsData() {
-
         recordInfoTitleTextView.text = getString(R.string.season)
     }
 
     fun initDialog() {
-        dialog = GameDialog(
+        editGameDialog = GameDialog(
             title = getString(R.string.edit_game_title_dialog),
             events = this,
             actualText = viewModel.game.value?.points.toString() ?: "0"
         )
     }
 
+    /**
+     * set floating action button click
+     */
     fun setFabClick() {
         fabEditGame.setOnClickListener {
-            dialog.show(supportFragmentManager, "")
+            editGameDialog.show(supportFragmentManager, "")
         }
     }
 
+    /**
+     * interface for positive click in editGameDialog
+     */
     override fun positiveClick(insertedText: String) {
         if (insertedText.isNullOrEmpty()) {
-            dialog.setError(getString(R.string.empty_textfield_error))
+            editGameDialog.setError(getString(R.string.empty_textfield_error))
         } else if (insertedText.toInt() == viewModel.game.value?.points) {
-            dialog.setError(getString(R.string.score_equals_error))
+            editGameDialog.setError(getString(R.string.score_equals_error))
         } else {
+            /**
+             * update the game and close the dialog
+             */
             CoroutineScope(Dispatchers.IO).launch {
                 viewModel.updateGame(
                     updatedPoints = insertedText.toInt()
                 )
             }
-            dialog.dismiss()
+            editGameDialog.dismiss()
         }
     }
 
+    /**
+     * interface for negative click in editGameDialog
+     */
     override fun negativeClick() {
-        dialog.dismiss()
+        /**
+         * close the dialog
+         */
+        editGameDialog.dismiss()
     }
 }

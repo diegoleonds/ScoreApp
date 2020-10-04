@@ -3,6 +3,9 @@ package com.example.scoreapp.data.database
 import androidx.room.*
 import com.example.scoreapp.data.model.Game
 
+/**
+ * Contain the methods for data access
+ */
 @Dao
 interface GameDAO : BaseDAO<Game> {
 

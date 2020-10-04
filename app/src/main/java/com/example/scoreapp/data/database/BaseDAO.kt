@@ -5,6 +5,9 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Update
 
+/**
+ * Base interface implemented in the others DAO's
+ */
 @Dao
 interface BaseDAO<T> {
 

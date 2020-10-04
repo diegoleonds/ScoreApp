@@ -6,6 +6,9 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
+/**
+ *  implements parcelable to be able to be sent to other activities via intent
+ */
 @Entity()
 data class Game(
     @PrimaryKey(autoGenerate = true)

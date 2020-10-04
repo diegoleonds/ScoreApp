@@ -3,6 +3,9 @@ package com.example.scoreapp.ui.model
 import android.os.Parcel
 import android.os.Parcelable
 
+/**
+ * implements parcelable to be able to be sent to other activities via intent
+ */
 data class Season(val id: Long,
                   var maxScore: Int,
                   var minScore: Int) : Parcelable{

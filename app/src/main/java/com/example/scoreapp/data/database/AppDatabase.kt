@@ -5,6 +5,9 @@ import androidx.room.RoomDatabase
 import com.example.scoreapp.data.model.Game
 import com.example.scoreapp.data.model.Season
 
+/**
+ * Database class, used to get DAO's
+ */
 @Database(entities = arrayOf(Season::class, Game::class), version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun gameDao(): GameDAO

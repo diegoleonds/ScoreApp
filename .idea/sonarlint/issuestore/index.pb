@@ -75,8 +75,6 @@ p
 Napp/src/test/java/com/example/scoreapp/domain/usecase/CreateGameUseCaseTest.kt,f\6\f658a93d2f909717146d80202144d44da429a02c
 €
 Papp/src/main/java/com/example/scoreapp/domain/usecase/GetGamesBySeasonUseCase.kt,0\0\00d1fc2804800691194c3998f72d711b0914ea32
-o
-?app/src/main/java/com/example/scoreapp/ui/dialog/DialogClick.kt,e\6\e6020900722effc5226b0f69a3b0214bcb667e03
 n
 >app/src/main/java/com/example/scoreapp/ui/dialog/GameDialog.kt,1\a\1ad9df7b8aeb2cabaa1f26bf1a80a5e3a052dab8
 <
@@ -117,7 +115,11 @@ x
 Happ/src/test/java/com/example/scoreapp/ui/viewmodel/GameViewModelTest.kt,0\7\07e6e78eca05f7ae1b6ed80ec2d527e1171bee13
 ^
 .app/src/main/res/layout/activity_game_info.xml,f\1\f181c5fc2115213cd098e57cf6f32460213df347
-`
-0app/src/main/res/layout/activity_season_info.xml,0\4\04e853f383c3037511b0e57e7f05a2dd8a835ba4
 [
 +app/src/main/res/layout/cardview_points.xml,2\f\2f96a610907b67ba1ef7d057a0090581dd9044aa
+W
+'app/src/main/res/layout/dialog_game.xml,c\7\c781c454ff55cb278fd9b2cfa8adda153a5c820e
+S
+#app/src/main/res/values/strings.xml,d\2\d2281fbb3027de2722081a53408dd77628bf080e
+p
+@app/src/main/java/com/example/scoreapp/ui/dialog/DialogEvents.kt,c\a\ca66b749709e5538bc89933e1aa5f3a83a9f4390
