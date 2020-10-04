@@ -26,4 +26,6 @@
     <string name="points">points</string>
     <string name="game">Game</string>
     <string name="season">Season</string>
+    <string name="is_season_new_intent">isNew</string>
+    <string name="season_created_toast_message">Welcome to your new season game list</string>
 </resources>
